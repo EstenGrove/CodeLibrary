@@ -6,6 +6,10 @@ import { NavLink } from "react-router-dom";
 import { routes } from "../../helpers/utils_routes";
 import { useWindowSize } from "../../utils/useWindowSize";
 
+// REQUIREMENTS:
+// - Change this to ONLY show a menu icon on the right
+// include the search input as well
+
 const [home, snippets, tools, newSnippet] = routes;
 
 const MobileDropdown = () => {

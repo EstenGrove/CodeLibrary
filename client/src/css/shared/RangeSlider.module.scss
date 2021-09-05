@@ -1,0 +1,112 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.RangeSlider {
+	width: 100%;
+	height: auto;
+
+	&_top {
+		width: 100%;
+		@include flex_row(space-between, center);
+		margin-bottom: 2rem;
+		font-family: map-get($map: $fonts, $key: "system");
+
+		&_label {
+			font-size: 1.5rem;
+			font-weight: 600;
+			color: map-get($map: $blueGreyMap, $key: "600");
+		}
+		&_value {
+			font-size: 1.4rem;
+			font-weight: 500;
+			color: map-get($map: $blueGreyMap, $key: "500");
+
+			&_val {
+				font-size: 1.5rem;
+				line-height: 1.6rem;
+				color: map-get($map: $blueGreyMap, $key: "700");
+				&:hover {
+					cursor: pointer;
+				}
+			}
+			&_px {
+				font-size: 1.4rem;
+				line-height: 1.4rem;
+				color: map-get($map: $blueGreyMap, $key: "700");
+			}
+			&_input {
+				width: 3.5rem;
+				border: none;
+				outline: none;
+				border-radius: 0.5rem;
+				padding: 0 0.3rem;
+				font-size: 1.5rem;
+				line-height: 1.6rem;
+				color: map-get($map: $blueGreyMap, $key: "700");
+			}
+		}
+	}
+
+	&_inner {
+		width: 100%;
+		height: auto;
+
+		&_input {
+			width: 100%;
+			height: 0.8rem;
+			border-radius: 1rem;
+			background-color: #ffffff;
+			border: 1px solid #ccc;
+			-webkit-appearance: none;
+
+			&:focus-within {
+				outline: none;
+				box-shadow: none;
+			}
+			&:hover {
+				cursor: pointer;
+			}
+			&::-moz-range-thumb {
+				background-color: map-get($map: $purpleMap, $key: "600");
+			}
+			&::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				width: 1.5rem;
+				height: 1.5rem;
+				border-radius: 50%;
+				background-color: map-get($map: $purpleMap, $key: "600");
+			}
+			// background track, not actual track
+			&::-moz-range-track {
+				background-color: map-get($map: $purpleMap, $key: "600");
+				border-radius: 5rem;
+			}
+		}
+	}
+}
+
+// circle thumb button
+input[type="range"]::-ms-thumb {
+	background-color: map-get($map: $purpleMap, $key: "600");
+	box-shadow: map-get($map: $shadows, $key: "light");
+}
+input[type="range"]::-moz-range-thumb {
+	background-color: map-get($map: $purpleMap, $key: "600");
+	box-shadow: map-get($map: $shadows, $key: "light");
+}
+input[type="range"]::-webkit-slider-thumb {
+	background-color: map-get($map: $purpleMap, $key: "600");
+	box-shadow: map-get($map: $shadows, $key: "light");
+}
+
+.MiniInput {
+	width: 3.5rem;
+	border: none;
+	outline: none;
+	border-radius: 0.5rem;
+	padding: 0 0.3rem;
+	font-size: 1.5rem;
+	line-height: 1.6rem;
+	color: map-get($map: $blueGreyMap, $key: "700");
+}

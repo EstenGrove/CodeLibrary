@@ -15,7 +15,6 @@ const SearchInput = ({
 	id,
 	placeholder = "⌘+k to search...",
 	searchHandler,
-	handleSubmit,
 }) => {
 	const searchRef = useRef();
 	// triggers for "⌘k"
@@ -33,6 +32,16 @@ const SearchInput = ({
 		setLocalVal("");
 		searchHandler(name, "");
 		searchRef.current.focus();
+	};
+
+	// if 'clear' icon is focused and user hits enter...
+	// ...then clear search field
+	const clearViaEnter = (e) => {
+		if (e.key === "Enter") {
+			return clearHandler(e);
+		} else {
+			return;
+		}
 	};
 
 	// focuses input when keyboard combo (ie. '⌘k') are triggered
@@ -72,6 +81,8 @@ const SearchInput = ({
 				<div
 					className={styles.SearchInput_clear}
 					onClick={clearHandler}
+					// onKeyDown={clearHandler}
+					onKeyDown={clearViaEnter}
 					tabIndex={0}
 				>
 					<svg className={styles.SearchInput_clear_icon}>
@@ -92,6 +103,5 @@ SearchInput.propTypes = {
 	name: PropTypes.string,
 	id: PropTypes.string,
 	placeholder: PropTypes.string,
-	handleChange: PropTypes.func,
-	handleSubmit: PropTypes.func,
+	searchHandler: PropTypes.func,
 };

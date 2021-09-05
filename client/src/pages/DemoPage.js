@@ -19,6 +19,7 @@ import {
 import SnippetCard from "../components/snippets/SnippetCard";
 import CreateSnippet from "../components/snippets/CreateSnippet";
 import SearchInput from "../components/shared/SearchInput";
+import CustomDropdown from "../components/shared/CustomDropdown";
 import TagCreator from "../components/tags/TagCreator";
 import EditTag from "../components/tags/EditTag";
 import TagSelector from "../components/tags/TagSelector";
@@ -164,6 +165,10 @@ const DemoPage = () => {
 					Code Library ~ Demo Page
 				</h1>
 			</header>
+
+			<div className={styles.DemoPage_main}>
+				<CustomDropdown />
+			</div>
 
 			<div className={styles.DemoPage_main}>
 				<SearchInput

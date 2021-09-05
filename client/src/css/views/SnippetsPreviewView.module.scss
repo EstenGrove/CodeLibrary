@@ -1,0 +1,15 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.SnippetsPreviewView {
+	@include fill_container;
+	padding: 4rem 1rem;
+
+	&_search {
+		width: 100%;
+		height: auto;
+		@include flex_row(center, flex-start);
+		margin-bottom: 4rem;
+	}
+}
