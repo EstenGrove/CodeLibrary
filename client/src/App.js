@@ -11,25 +11,28 @@ import HomePage from "./pages/HomePage";
 import ToolsPage from "./pages/ToolsPage";
 // playground page
 import DemoPage from "./pages/DemoPage";
+import { AppProviders } from "./state/AppProviders";
 
 const history = createBrowserHistory();
 
 function App() {
 	return (
 		<Router history={history}>
-			<div className="App">
-				<Main>
-					<Navbar />
-					<Switch>
-						<Route exact path="/" component={HomePage} />
-						<Route path="/tools" component={ToolsPage} />
-						{/* '/snippets' has sub-routes */}
-						<Route exact path="/snippets" component={PreviewsPage} />
-						{/* PLAYGROUND PAGE */}
-						<Route path="/demo" component={DemoPage} />
-					</Switch>
-				</Main>
-			</div>
+			<AppProviders>
+				<div className="App">
+					<Main>
+						<Navbar />
+						<Switch>
+							<Route exact path="/" component={HomePage} />
+							<Route path="/tools" component={ToolsPage} />
+							{/* '/snippets' has sub-routes */}
+							<Route exact path="/snippets" component={PreviewsPage} />
+							{/* PLAYGROUND PAGE */}
+							<Route path="/demo" component={DemoPage} />
+						</Switch>
+					</Main>
+				</div>
+			</AppProviders>
 		</Router>
 	);
 }
