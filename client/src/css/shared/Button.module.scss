@@ -1,0 +1,22 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.Button {
+	padding: 0.7rem 1.7rem;
+	border-radius: 0.5rem;
+	font-size: 1.6rem;
+	font-weight: 600;
+	border: none;
+	outline: none;
+	box-shadow: map-get($map: $shadows, $key: "medium");
+	&:hover {
+		cursor: pointer;
+		box-shadow: map-get($map: $shadows, $key: "mainOutline");
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+}

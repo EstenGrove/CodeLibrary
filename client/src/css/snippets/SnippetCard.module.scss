@@ -1,0 +1,31 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.SnippetCard {
+	width: 45rem;
+	height: 25rem;
+	border-radius: 1rem;
+	box-shadow: map-get($map: $shadows, $key: "medium");
+	padding: 1rem;
+	background-color: map-get($map: $blueGreyMap, $key: "200");
+
+	&_top {
+		width: 100%;
+		height: auto;
+		@include flex_row(flex-start, center);
+		margin-bottom: 2rem;
+	}
+	&_about {
+		width: 100%;
+		height: auto;
+	}
+	&_tags {
+		width: 100%;
+		height: auto;
+	}
+	&_actions {
+		width: 100%;
+		height: 7rem;
+	}
+}

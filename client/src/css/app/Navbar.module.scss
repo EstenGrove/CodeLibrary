@@ -1,0 +1,101 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.Navbar {
+	width: 100%;
+	height: 7rem;
+	box-shadow: map-get($map: $shadows, $key: "medium");
+
+	&_list {
+		width: 100%;
+		height: 100%;
+		list-style: none;
+		@include flex_row(flex-end, center);
+
+		&_logo {
+			margin-right: auto;
+			margin-left: 1rem;
+
+			& > a {
+				text-decoration: none;
+				font-size: 3rem;
+				font-weight: 500;
+				color: map-get($map: $purpleMap, $key: "200");
+				// font-family: "Allison", cursive;
+				font-family: "Nanum Pen Script";
+				& > b {
+					color: map-get($map: $redMap, $key: "400");
+					font-size: 3rem;
+				}
+			}
+		}
+
+		&_item {
+			font-size: 1.5rem;
+			font-weight: 500;
+			color: map-get($map: $purpleMap, $key: "200");
+			text-decoration: none;
+			margin: 0 1.3rem;
+
+			& > a {
+				font-size: 1.5rem;
+				font-weight: 500;
+				color: map-get($map: $purpleMap, $key: "200");
+				text-decoration: none;
+				@include hoverEffect(
+					map-get($map: $purpleMap, $key: "300"),
+					map-get($map: $purpleMap, $key: "400")
+				);
+			}
+		}
+	}
+}
+.MobileNavbar {
+	width: 100%;
+	height: 7rem;
+	box-shadow: map-get($map: $shadows, $key: "medium");
+
+	&_list {
+		width: 100%;
+		height: 100%;
+		list-style: none;
+		@include flex_row(flex-end, center);
+
+		&_logo {
+			margin-right: auto;
+			margin-left: 1rem;
+
+			& > a {
+				text-decoration: none;
+				font-size: 3rem;
+				font-weight: 500;
+				color: map-get($map: $purpleMap, $key: "200");
+				// font-family: "Allison", cursive;
+				font-family: "Nanum Pen Script";
+				& > b {
+					color: map-get($map: $redMap, $key: "400");
+					font-size: 3rem;
+				}
+			}
+		}
+
+		&_menu {
+			margin-left: auto;
+			padding-right: 1rem;
+
+			&_icon {
+				width: 3rem;
+				height: 3rem;
+				fill: map-get($map: $purpleMap, $key: "100");
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.MobileDropdown {
+	width: 100%;
+	height: 45rem;
+	display: block;
+}

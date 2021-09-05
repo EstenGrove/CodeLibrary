@@ -1,0 +1,10 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.SnippetDesc {
+	width: 100%;
+	height: auto;
+	font-family: map-get($map: $fonts, $key: "mainSans");
+	margin-bottom: 2rem;
+}

@@ -1,0 +1,36 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.TagSelectorOption {
+	width: 100%;
+	height: auto;
+	padding: 0.5rem;
+	font-size: 1.4rem;
+	font-weight: 400;
+	@include flex_row(space-between, center);
+	margin-bottom: 1.5rem;
+
+	&_option {
+		font-size: 1.4rem;
+		font-weight: 400;
+	}
+
+	&:hover {
+		background-color: map-get($map: $blueGreyMap, $key: "200");
+		color: map-get($map: $purpleMap, $key: "700");
+		cursor: pointer;
+	}
+
+	&_isSelected {
+		@extend .TagSelectorOption;
+		background-color: map-get($map: $blueGreyMap, $key: "200");
+		color: map-get($map: $purpleMap, $key: "700");
+	}
+
+	&_icon {
+		width: 1.4rem;
+		height: 1.4rem;
+		fill: map-get($map: $purpleMap, $key: "700");
+	}
+}

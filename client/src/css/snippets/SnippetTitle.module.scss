@@ -1,0 +1,12 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.SnippetTitle {
+	font-size: 2rem;
+	font-family: map-get($map: $fonts, $key: "mainSans");
+	&:hover {
+		color: map-get($map: $purpleMap, $key: "700");
+		cursor: pointer;
+	}
+}

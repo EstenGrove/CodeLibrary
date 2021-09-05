@@ -1,0 +1,23 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.DemoPage {
+	@include fill_container;
+
+	&_header {
+		width: 100%;
+		height: auto;
+
+		&_title {
+			font-size: 3rem;
+			font-weight: 800;
+			font-family: map-get($map: $fonts, $key: "mainSans");
+			color: map-get($map: $blueGreyMap, $key: "100");
+		}
+	}
+	&_main {
+		@include fill_container;
+		padding: 4rem 2rem;
+	}
+}

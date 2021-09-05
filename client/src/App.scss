@@ -1,0 +1,9 @@
+@import "./sass/variables";
+@import "./sass/mixins";
+@import "./sass/custom";
+
+.App {
+	max-width: 100vw;
+	max-height: 100vh;
+	font-family: map-get($map: $fonts, $key: "mainSans");
+}

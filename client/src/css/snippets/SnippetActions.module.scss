@@ -1,0 +1,74 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.SnippetActions {
+	width: 100%;
+	height: 4rem;
+	@include flex_row(flex-end, flex-end);
+}
+.CopyCodeIcon {
+	width: 3rem;
+	height: 3rem;
+	margin: 0 0.3rem;
+
+	&_icon {
+		width: 2rem;
+		height: 2rem;
+		fill: map-get($map: $blueGreyMap, $key: "600");
+		&:hover {
+			cursor: pointer;
+			fill: map-get($map: $blueGreyMap, $key: "800");
+		}
+	}
+}
+.DownloadFileIcon {
+	width: 3rem;
+	height: 3rem;
+
+	&_icon {
+		width: 2.2rem;
+		height: 2.2rem;
+		fill: map-get($map: $blueGreyMap, $key: "600");
+		&:hover {
+			cursor: pointer;
+			fill: map-get($map: $blueGreyMap, $key: "800");
+		}
+	}
+}
+
+.EditSnippetIcon {
+	width: auto;
+	height: auto;
+	align-self: center;
+	@include flex_row(flex-start, flex-end);
+	margin-right: auto;
+	&:hover {
+		cursor: pointer;
+	}
+	&:hover &_icon {
+		fill: map-get($map: $purpleMap, $key: "700");
+	}
+
+	&_icon {
+		width: 1.7rem;
+		height: 1.7rem;
+		fill: map-get($map: $purpleMap, $key: "700");
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	&_text {
+		font-size: 1.3rem;
+		font-family: map-get($map: $fonts, $key: "mainSans");
+		margin-left: 0.2rem;
+		@include hoverEffect(
+			map-get($map: $purpleMap, $key: "700"),
+			map-get($map: $purpleMap, $key: "300")
+		);
+		&:hover {
+			cursor: pointer;
+			color: map-get($map: $purpleMap, $key: "700");
+		}
+	}
+}

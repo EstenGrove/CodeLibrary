@@ -1,0 +1,65 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.CharCountIndicator {
+	width: 100%;
+	height: auto;
+	position: relative;
+	@include flex_row(flex-start, flex-start);
+}
+
+.CharCounter {
+	position: absolute;
+	bottom: 0;
+	right: 0.6rem;
+
+	&_counts {
+		font-size: 1.2rem;
+		font-weight: 500;
+		font-family: map-get($map: $fonts, $key: "altSans");
+		color: map-get($map: $blueGreyMap, $key: "500");
+	}
+	&_errors {
+		width: 100%;
+		position: relative;
+
+		&_charLimit {
+			width: 100%;
+			height: auto;
+			margin: 0.5rem 0;
+			@include flex_row(flex-start, center);
+
+			&_icon {
+				width: 1.7rem;
+				height: 1.7rem;
+				fill: map-get($map: $redMap, $key: "600");
+				margin-right: 0.3rem;
+			}
+			&_msg {
+				font-size: 1.3rem;
+				font-weight: 500;
+				color: map-get($map: $redMap, $key: "600");
+			}
+		}
+	}
+}
+
+.CharLimitError {
+	width: 100%;
+	height: auto;
+	margin: 0.5rem 0;
+	@include flex_row(flex-start, center);
+
+	&_icon {
+		width: 1.7rem;
+		height: 1.7rem;
+		fill: map-get($map: $redMap, $key: "600");
+		margin-right: 0.3rem;
+	}
+	&_msg {
+		font-size: 1.3rem;
+		font-weight: 500;
+		color: map-get($map: $redMap, $key: "600");
+	}
+}

@@ -1,0 +1,161 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.TagSelectorDropdown {
+	position: absolute;
+	width: 30rem;
+	height: 30rem;
+	top: 4rem;
+	left: 0;
+	background-color: #ffffff;
+	border-radius: 1rem;
+	box-shadow: map-get($map: $shadows, $key: "heavy");
+	z-index: 5;
+
+	&::-webkit-scrollbar {
+		-webkit-appearance: none;
+		width: 10px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: 5rem;
+		background-color: rgba(0, 0, 0, 0.5);
+		box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+	}
+
+	& > hr {
+		opacity: 0.3;
+	}
+
+	&_top {
+		display: block;
+		width: 90%;
+		height: 3rem;
+		margin: 1rem auto;
+		@include flex_row(center, center);
+		background-color: #eaecef;
+		border-radius: 0.5rem;
+		padding: 0 0.5rem;
+		&:focus-within,
+		&:hover {
+			box-shadow: map-get($map: $shadows, $key: "mainOutline");
+		}
+
+		&_search {
+			width: 100%;
+			height: 3rem;
+			font-size: 1.4rem;
+			border: none;
+			outline: none;
+			border-radius: 0.5rem;
+			background-color: #eaecef;
+			padding-left: 0.5rem;
+		}
+		&_searchIcon {
+			width: 1.8rem;
+			height: 1.8rem;
+			fill: map-get($map: $blueGreyMap, $key: "600");
+		}
+		&_clearIcon {
+			width: 1.4rem;
+			height: 1.4rem;
+			fill: map-get($map: $redMap, $key: "500");
+			border-radius: 50%;
+			@include flex_row(center, center);
+			&:hover {
+				background-color: #ffffff;
+				cursor: pointer;
+			}
+		}
+	}
+	&_selectAll {
+		width: 100%;
+		height: auto;
+		padding: 0.5rem 1rem;
+		@include flex_row(flex-start, center);
+		margin-bottom: 1rem;
+
+		&_btn {
+			padding: 0.5rem 1rem;
+			border-radius: 0.5rem;
+			background-color: transparent;
+			color: map-get($map: $greenMap, $key: "500");
+			margin-right: 0.5rem;
+			font-weight: 600;
+			color: map-get($map: $purpleMap, $key: "700");
+			outline: none;
+			border: none;
+			&:hover {
+				cursor: pointer;
+				box-shadow: map-get($map: $shadows, $key: "mainOutline");
+			}
+		}
+	}
+	&_list {
+		@include fill_container;
+		height: 17.5rem;
+		padding: 0 1rem;
+		padding-bottom: 2rem;
+		overflow-y: scroll;
+		font-family: map-get($map: $fonts, $key: "altSans");
+		box-shadow: inset 0 5px 9px -10px rgba(0, 0, 0, 0.3);
+
+		/* Background tracking */
+		&::-webkit-scroll-track {
+			background-color: #ffffff;
+		}
+		/* Sets width/height of 'thumb' & hides default */
+		&::-webkit-scrollbar {
+			appearance: none;
+			-webkit-appearance: none;
+			width: 0.8rem;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: map-get($map: $blueGreyMap, $key: "500");
+			border-radius: 5rem;
+		}
+
+		&_options {
+			list-style-type: none;
+		}
+	}
+	&_actions {
+		position: absolute;
+		bottom: -1rem;
+		left: 0;
+		width: 100%;
+		height: 5rem;
+		padding: 1rem 1rem;
+		padding-top: 0.5rem;
+		border-radius: 0 0 1rem 1rem;
+		background-color: green;
+		background-color: #ffffff;
+		@include flex_row(flex-end, flex-end);
+		margin-bottom: 1rem;
+
+		&_clearBtn {
+			padding: 0.5rem 1rem;
+			border-radius: 0.5rem;
+			background-color: transparent;
+			color: map-get($map: $redMap, $key: "600");
+			margin-right: 0.5rem;
+			outline: none;
+			border: 1px solid map-get($map: $redMap, $key: "600");
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		&_saveBtn {
+			padding: 0.6rem 1rem;
+			border-radius: 0.5rem;
+			background-color: map-get($map: $purpleMap, $key: "700");
+			color: #ffffff;
+			outline: none;
+			border: none;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+}

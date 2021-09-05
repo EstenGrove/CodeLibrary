@@ -1,0 +1,48 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.TagColorList {
+	width: 100%;
+	height: auto;
+
+	&_header {
+		@include flex_row(flex-start, flex-start);
+
+		&_label {
+			font-size: 1.5rem;
+			font-weight: 600;
+			font-family: map-get($map: $fonts, $key: "mainSans");
+			color: map-get($map: $blueGreyMap, $key: "600");
+			text-transform: uppercase;
+			padding-left: 1rem;
+			margin-bottom: 1rem;
+		}
+
+		&_selected {
+			font-size: 1.2rem;
+			font-weight: 400;
+			font-family: map-get($map: $fonts, $key: "altSans");
+			color: map-get($map: $blueGreyMap, $key: "400");
+			margin-left: 0.5rem;
+		}
+
+		&_clearColor {
+			border: none;
+			outline: none;
+			font-size: 1.2rem;
+			color: map-get($map: $redMap, $key: "600");
+			margin-left: auto;
+			background-color: transparent;
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+
+	&_options {
+		width: 100%;
+		height: auto;
+		@include flex_row(space-around, flex-start, wrap);
+	}
+}

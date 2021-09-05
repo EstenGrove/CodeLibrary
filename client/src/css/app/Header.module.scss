@@ -1,0 +1,26 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.Header {
+	width: 100%;
+	height: auto;
+	min-height: 15rem;
+	@include flex_col(flex-start, flex-start);
+	margin-bottom: 4rem;
+
+	&_title {
+		font-size: 3rem;
+		font-weight: 600;
+		color: map-get($map: $blueGreyMap, $key: "200");
+	}
+	&_subtitle {
+		font-size: 1.6rem;
+		font-weight: 500;
+		color: map-get($map: $blueGreyMap, $key: "400");
+	}
+	&_content {
+		width: 100%;
+		height: auto;
+	}
+}

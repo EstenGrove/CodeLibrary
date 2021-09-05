@@ -1,0 +1,62 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.SearchInput {
+	position: relative;
+	width: auto;
+	min-width: 35rem;
+	max-width: 50rem;
+	height: 4rem;
+	border-radius: 5rem;
+	background-color: #eaecef;
+	@include flex_row(flex-start, center);
+
+	&:hover,
+	&:focus-within {
+		box-shadow: map-get($map: $hoverShadows, $key: "altMain");
+		cursor: pointer;
+	}
+
+	&_icon {
+		width: 2.5rem;
+		height: 2.5rem;
+		fill: map-get($map: $blueGreyMap, $key: "500");
+		margin-left: 0.5rem;
+	}
+	&_input {
+		width: 100%;
+		height: 100%;
+		max-width: 100%;
+		border-radius: 5rem;
+		border: none;
+		outline: none;
+		font-size: 1.6rem;
+		font-weight: 500;
+		color: map-get($map: $blueGreyMap, $key: "700");
+		background-color: transparent;
+		padding-left: 1rem;
+	}
+	&_clear {
+		position: absolute;
+		top: 0.6rem;
+		right: 0.5rem;
+		width: 2.8rem;
+		height: 2.8rem;
+		border-radius: 50%;
+		background-color: map-get($map: $redMap, $key: "200");
+		@include flex_row(center, center);
+		&:focus-within,
+		&:hover {
+			cursor: pointer;
+			box-shadow: map-get($map: $hoverShadows, $key: "redOutline");
+			outline: none;
+		}
+
+		&_icon {
+			width: 1.8rem;
+			height: 1.8rem;
+			fill: map-get($map: $redMap, $key: "600");
+		}
+	}
+}

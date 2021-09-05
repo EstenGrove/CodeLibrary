@@ -1,0 +1,27 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.SnippetTitleInput {
+	position: relative;
+	width: 100%;
+	height: auto;
+	margin-bottom: 4rem;
+
+	&_labels {
+		width: 100%;
+		@include flex_row(flex-start, flex-start);
+
+		&_label {
+			font-size: 1.6rem;
+			font-weight: 400;
+			color: map-get($map: $blueGreyMap, $key: "500");
+		}
+		&_charCount {
+			font-size: 1.3rem;
+			font-weight: 500;
+			color: map-get($map: $blueGreyMap, $key: "500");
+			margin-left: auto;
+		}
+	}
+}

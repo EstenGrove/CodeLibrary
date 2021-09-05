@@ -1,0 +1,52 @@
+@import "../../sass/custom";
+@import "../../sass/variables";
+@import "../../sass/mixins";
+
+.TextInput {
+	width: 100%;
+	height: auto;
+	border-radius: 0.5rem;
+	@include flex_col(flex-start, flex-start);
+
+	&_label {
+		position: relative;
+		font-size: 1.6rem;
+		font-weight: 400;
+		color: map-get($map: $blueGreyMap, $key: "500");
+	}
+
+	&_input {
+		padding-left: 0.5rem;
+		width: 100%;
+		height: 3.5rem;
+		border-radius: 0.5rem;
+		border: 1px solid #ccc;
+		outline: none;
+		background-color: #eaecef;
+		color: map-get($map: $blueGreyMap, $key: "600");
+		font-size: 1.6rem;
+		font-weight: 400;
+
+		// BORDER STYLES FOR REQUIRED INPUTS
+		// &:required {
+		//     border-left: 3px solid map-get($map: $flatColors, $key: 'mainRed');
+		// }
+
+		// &:required:invalid {
+		//     border-left: 3px solid map-get($map: $flatColors, $key: 'mainRed');
+		// }
+
+		// &:required:valid {
+		//     border-left: 3px solid map-get($map: $flatColors, $key: 'mainGreen');
+		// }
+	}
+
+	&_requiredFlag {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 100%;
+		color: map-get($map: $redMap, $key: "600");
+		opacity: 0.6;
+	}
+}

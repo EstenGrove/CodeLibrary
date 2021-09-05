@@ -1,0 +1,19 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.StarredIndicator {
+	width: auto;
+	height: auto;
+	align-self: center;
+	margin-right: 0.7rem;
+
+	&_icon {
+		width: 2.5rem;
+		height: 2.5rem;
+		fill: map-get($map: $blueGreyMap, $key: "700");
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}

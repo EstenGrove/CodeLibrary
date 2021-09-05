@@ -1,0 +1,7 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.FilePreviewer {
+	@include fill_container;
+}

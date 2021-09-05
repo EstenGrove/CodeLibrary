@@ -1,0 +1,33 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.Tag {
+	width: auto;
+	min-width: max-content;
+	height: max-content;
+	padding: 0.2rem 0.5rem;
+	border-radius: 0.5rem;
+	@include flex_row(center, center);
+	background-color: #ffffff;
+	border: 1px solid #ccc;
+	margin: 0.3rem;
+
+	&_name {
+		@include fill_container;
+		font-size: 1.3rem;
+		font-weight: 500;
+		font-family: map-get($map: $fonts, $key: "mainSans");
+		color: map-get($map: $blueGreyMap, $key: "700");
+	}
+	&_clearIcon {
+		width: 1.8rem;
+		height: 1.8rem;
+		border-radius: 50%;
+		fill: map-get($map: $redMap, $key: "600");
+		margin-left: 0.5rem;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}

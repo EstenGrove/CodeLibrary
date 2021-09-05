@@ -1,0 +1,13 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.TagsList {
+	width: 100%;
+	height: auto;
+
+	&_list {
+		width: 100%;
+		@include flex_row(space-between, flex-start, wrap);
+	}
+}

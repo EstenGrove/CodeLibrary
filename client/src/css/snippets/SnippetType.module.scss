@@ -1,0 +1,16 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.SnippetType {
+	width: auto;
+	height: auto;
+	margin-left: auto;
+
+	&_type {
+		font-size: 1.2rem;
+		font-weight: 500;
+		font-family: map-get($map: $fonts, $key: "mainSans");
+		color: map-get($map: $blueGreyMap, $key: "500");
+	}
+}

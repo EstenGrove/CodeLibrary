@@ -1,0 +1,157 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.TextArea {
+	width: 100%;
+	height: auto;
+	@include flex_col(flex-start, flex-start);
+
+	&_label {
+		font-size: 1.6em;
+		position: relative;
+		color: map-get($map: $blueGreyMap, $key: "500");
+
+		&_requiredFlag {
+			position: absolute;
+			top: 0;
+			left: 100%;
+			padding-left: 0.2rem;
+			color: map-get($map: $redMap, $key: "600");
+			opacity: 0.6;
+		}
+	}
+
+	&_input {
+		@include fill_container;
+		height: 15rem;
+		resize: none;
+		padding: 1rem;
+		font-family: map-get($map: $fonts, $key: "mainSans");
+		border-radius: 0.5rem;
+		border: 1px solid #ccc;
+		outline: none;
+		background-color: #eaecef;
+		font-size: 1.6rem;
+		overflow-y: auto;
+
+		&:hover,
+		&:focus-within {
+			box-shadow: map-get($map: $shadows, $key: "mainOutline");
+			cursor: pointer;
+		}
+
+		&::-webkit-input-placeholder {
+			font-size: 1.5rem;
+			font-weight: 300;
+			color: map-get($map: $blueGreyMap, $key: "500");
+		}
+
+		&:-ms-input-placeholder {
+			font-size: 1.5rem;
+			font-weight: 300;
+			color: map-get($map: $blueGreyMap, $key: "500");
+		}
+
+		&::-ms-input-placeholder {
+			font-size: 1.5rem;
+			font-weight: 300;
+			color: map-get($map: $blueGreyMap, $key: "500");
+		}
+
+		&::placeholder {
+			font-size: 1.5rem;
+			font-weight: 300;
+			font-family: map-get($map: $fonts, $key: "altSans");
+			color: map-get($map: $blueGreyMap, $key: "500");
+		}
+	}
+	&_charCount {
+		font-family: map-get($map: $fonts, $key: "altSans");
+	}
+}
+
+.outOfChars {
+	color: map-get($map: $redMap, $key: "600");
+	font-family: map-get($map: $fonts, $key: "altSans");
+	-webkit-animation: flash 1.5s ease-in-out infinite both;
+	animation: flash 1.5s ease-in-out infinite both;
+}
+
+@-webkit-keyframes flash {
+	from {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		-webkit-transform-origin: center center;
+		transform-origin: center center;
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+	}
+
+	10% {
+		-webkit-transform: scale(0.91);
+		transform: scale(0.91);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+
+	17% {
+		-webkit-transform: scale(0.98);
+		transform: scale(0.98);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+	}
+
+	33% {
+		-webkit-transform: scale(0.87);
+		transform: scale(0.87);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+
+	45% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+	}
+}
+
+@keyframes flash {
+	from {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		-webkit-transform-origin: center center;
+		transform-origin: center center;
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+	}
+
+	10% {
+		-webkit-transform: scale(0.91);
+		transform: scale(0.91);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+
+	17% {
+		-webkit-transform: scale(0.98);
+		transform: scale(0.98);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+	}
+
+	33% {
+		-webkit-transform: scale(0.87);
+		transform: scale(0.87);
+		-webkit-animation-timing-function: ease-in;
+		animation-timing-function: ease-in;
+	}
+
+	45% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out;
+	}
+}

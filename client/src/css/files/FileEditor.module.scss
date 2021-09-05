@@ -1,0 +1,36 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.FileEditor {
+	width: 100%;
+	height: 45rem;
+	padding: 1rem 1rem;
+	border-radius: 0.5rem;
+	margin-top: 4rem;
+
+	&_label {
+		font-size: 1.6rem;
+		font-weight: 500;
+		color: map-get($map: $blueGreyMap, $key: "600");
+	}
+
+	&_toolbar {
+		width: 100%;
+		height: 7rem;
+		border-radius: 0.5rem 0.5rem 0 0;
+		background-color: map-get($map: $blueGreyMap, $key: "200");
+		border: 1px solid #ccc;
+	}
+
+	&_markdown {
+		width: 100%;
+		height: 35rem;
+		max-height: 100%;
+		overflow-y: auto;
+		border-left: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		border-radius: 0 0 0.5rem 0.5rem;
+	}
+}

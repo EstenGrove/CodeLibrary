@@ -1,0 +1,8 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.TagDescInput {
+	@include fill_container;
+	padding: 0 3rem;
+}

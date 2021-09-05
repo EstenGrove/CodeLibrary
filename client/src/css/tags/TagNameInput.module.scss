@@ -1,0 +1,90 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.TagNameInput {
+	width: 100%;
+	height: auto;
+	padding: 0 1rem;
+	border-radius: 0.5rem;
+
+	&_labels {
+		@include flex_row(space-between, flex-start);
+
+		&_label {
+			font-size: 1.5rem;
+			font-weight: 600;
+			font-family: map-get($map: $fonts, $key: "mainSans");
+			color: map-get($map: $blueGreyMap, $key: "600");
+			margin-bottom: 0.2rem;
+			text-transform: uppercase;
+		}
+		&_info {
+			font-size: 1.3rem;
+			font-weight: 500;
+			color: map-get($map: $blueGreyMap, $key: "400");
+		}
+	}
+
+	&_input {
+		width: 100%;
+		height: 3.5rem;
+		border-radius: 0.5rem;
+		font-size: 1.6rem;
+		font-weight: 500;
+		background-color: #eaecef;
+		border: 1px solid #ccc;
+		outline: none;
+		font-family: map-get($map: $fonts, $key: "altSans");
+		color: map-get($map: $blueGreyMap, $key: "800");
+		padding-left: 0.5rem;
+
+		&::placeholder {
+			font-weight: 300;
+			color: map-get($map: $blueGreyMap, $key: "400");
+		}
+
+		&:hover,
+		&:focus-within {
+			cursor: pointer;
+			box-shadow: map-get($map: $shadows, $key: "mainOutline");
+		}
+	}
+
+	&_errors {
+		width: 100%;
+		position: relative;
+
+		&_charLimit {
+			width: 100%;
+			height: auto;
+			margin: 0.5rem 0;
+			@include flex_row(flex-start, center);
+
+			&_icon {
+				width: 1.7rem;
+				height: 1.7rem;
+				fill: map-get($map: $redMap, $key: "600");
+				margin-right: 0.3rem;
+			}
+			&_msg {
+				font-size: 1.3rem;
+				font-weight: 500;
+				color: map-get($map: $redMap, $key: "600");
+			}
+		}
+	}
+}
+
+.CharCounter {
+	position: absolute;
+	bottom: 0;
+	right: 0.6rem;
+
+	&_counts {
+		font-size: 1.2rem;
+		font-weight: 500;
+		font-family: map-get($map: $fonts, $key: "altSans");
+		color: map-get($map: $blueGreyMap, $key: "500");
+	}
+}

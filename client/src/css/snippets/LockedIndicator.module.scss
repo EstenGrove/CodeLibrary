@@ -1,0 +1,19 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.LockedIndicator {
+	width: auto;
+	height: auto;
+	margin-right: 1rem;
+
+	&_icon {
+		width: 1.7rem;
+		height: 1.7rem;
+		fill: map-get($map: $blueGreyMap, $key: "500");
+		&:hover {
+			cursor: pointer;
+			color: map-get($map: $blueGreyMap, $key: "700");
+		}
+	}
+}

@@ -1,0 +1,16 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.Section {
+	width: 100%;
+	height: auto;
+	padding: 1rem 2rem;
+	margin-bottom: 2rem;
+	border-bottom: 1px solid map-get($map: $blueGreyMap, $key: "200");
+
+	&_content {
+		width: 100%;
+		height: auto;
+	}
+}
