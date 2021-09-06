@@ -1,0 +1,48 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.FloatingNav {
+	position: fixed;
+	top: 7rem;
+	left: 0;
+	width: 100%;
+	height: auto;
+	padding: 1rem 2rem;
+	@include flex_row(space-between, center);
+
+	&_btn {
+		width: 3.5rem;
+		height: 3.5rem;
+		background-color: map-get($map: $purpleMap, $key: "700");
+		@include flex_row(center, center);
+		border-radius: 50%;
+		border: none;
+		outline: none;
+		&:hover {
+			cursor: pointer;
+			box-shadow: map-get($map: $shadows, $key: "heavy");
+		}
+
+		&_left {
+			@extend .FloatingNav_btn;
+			margin-right: auto;
+
+			&_icon {
+				width: 2.7rem;
+				height: 2.7rem;
+				fill: #ffffff;
+			}
+		}
+		&_right {
+			@extend .FloatingNav_btn;
+			margin-left: auto;
+
+			&_icon {
+				width: 2.7rem;
+				height: 2.7rem;
+				fill: #ffffff;
+			}
+		}
+	}
+}

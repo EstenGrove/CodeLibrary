@@ -3,6 +3,7 @@ import styles from "../../css/app/PageCards.module.scss";
 import { PropTypes } from "prop-types";
 import { isEmptyArray } from "../../helpers/utils_types";
 import PageCard from "./PageCard";
+import { useRouteMatch } from "react-router-dom";
 
 const cards = [
 	{
@@ -22,12 +23,15 @@ const cards = [
 	},
 ];
 
-const PageCards = ({ pageCards = [...cards] }) => {
+const PageCards = ({ baseRoute, pageCards = [...cards] }) => {
+	const match = useRouteMatch(baseRoute);
+
+	console.log("match", match);
 	return (
 		<div className={styles.PageCards}>
 			{!isEmptyArray(pageCards) &&
 				pageCards.map((card, idx) => (
-					<PageCard key={`Page:${idx}`} card={card} />
+					<PageCard key={`Page:${idx}`} card={card} baseRoute={baseRoute} />
 				))}
 		</div>
 	);

@@ -1,0 +1,8 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.CssFiltersPage {
+	@include fill_container;
+	padding: 4rem 2rem;
+}

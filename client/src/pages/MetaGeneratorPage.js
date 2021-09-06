@@ -6,6 +6,7 @@ import ParserView from "../views/ParserView";
 import MetaTagView from "../views/MetaTagView";
 
 const MetaGeneratorPage = () => {
+	console.log(`MetaGeneratorPage`);
 	return (
 		<div className={styles.MetaGeneratorPage}>
 			<Header
