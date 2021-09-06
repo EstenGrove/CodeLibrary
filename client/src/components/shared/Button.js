@@ -6,10 +6,12 @@ const Button = ({
 	handleClick,
 	isDisabled = false,
 	customStyles = {},
+	type = "button",
 	children,
 }) => {
 	return (
 		<button
+			type={type}
 			className={styles.Button}
 			onClick={handleClick}
 			disabled={isDisabled}

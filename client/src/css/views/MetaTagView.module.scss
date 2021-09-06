@@ -1,0 +1,40 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.MetaTagView {
+	@include fill_container;
+	@include flex_row(space-between, center, wrap);
+
+	&_form {
+		width: 50%;
+		height: 100%;
+
+		&_actions {
+			margin-top: 2rem;
+			width: 100%;
+			@include flex_row(flex-end, center);
+		}
+	}
+	&_preview {
+		width: 50%;
+		height: 100%;
+		min-height: 115rem;
+		@include flex_row(flex-end, flex-start);
+	}
+}
+
+@media only screen and (max-width: 1150px) {
+	.MetaTagView {
+		padding-bottom: 4rem;
+		@include flex_col(center, center);
+
+		&_form,
+		&_preview {
+			width: 100%;
+			height: auto;
+			min-height: auto;
+			@include flex_row(center, flex-start);
+		}
+	}
+}

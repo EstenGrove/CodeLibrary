@@ -25,7 +25,6 @@ function App() {
 						<Switch>
 							<Route exact path="/" component={HomePage} />
 							<Route path="/tools" component={ToolsPage} />
-							{/* '/snippets' has sub-routes */}
 							<Route path="/snippets" component={PreviewsPage} />
 							{/* PLAYGROUND PAGE */}
 							<Route path="/demo" component={DemoPage} />

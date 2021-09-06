@@ -1,0 +1,74 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.ReusableCodePreview {
+	width: 55rem;
+	height: 25rem;
+	min-height: 6rem;
+	max-width: 100%;
+	max-height: auto;
+	border-radius: 1rem;
+	margin-top: 6rem;
+	border: 1px solid #ccc;
+
+	&_top {
+		width: 100%;
+		height: 4rem;
+		padding: 0.5rem 1rem;
+		@include flex_row(flex-end, center);
+		background-color: #eaecef;
+		border-radius: 1rem 1rem 0 0;
+
+		&_label {
+			margin-right: auto;
+			font-size: 1.6rem;
+			font-weight: 600;
+			color: map-get($map: $blueGreyMap, $key: "700");
+		}
+
+		&_btn {
+			padding: 0.4rem 1.3rem;
+			border-radius: 0.5rem;
+			font-size: 1.3rem;
+			font-weight: 600;
+			background-color: transparent;
+			border: 1px solid map-get($map: $purpleMap, $key: "700");
+			color: map-get($map: $purpleMap, $key: "700");
+			outline: none;
+			&:hover {
+				cursor: pointer;
+				color: map-get($map: $purpleMap, $key: "500");
+			}
+		}
+	}
+	&_code {
+		@include fill_container;
+		overflow-x: auto;
+		overflow-y: auto;
+		padding: 2rem 1rem;
+		background-color: #ffffff;
+		border-radius: 0 0 1rem 1rem;
+
+		&::-webkit-scroll-track {
+			background-color: #ffffff;
+		}
+		/* Sets width/height of 'thumb' & hides default */
+		&::-webkit-scrollbar {
+			appearance: none;
+			-webkit-appearance: none;
+			width: 0.8rem;
+			height: 0.8rem;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: map-get($map: $blueGreyMap, $key: "500");
+			border-radius: 5rem;
+		}
+
+		&_pre {
+			font-family: "Courier New", Courier, monospace;
+			font-family: "Dank Mono", monospace;
+			font-size: 1.4rem;
+		}
+	}
+}
