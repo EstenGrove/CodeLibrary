@@ -1,0 +1,14 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.ColorPickerPreview {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 0.8rem;
+	border: 1px solid #ccc;
+	&:hover {
+		cursor: pointer;
+		border: 1px solid map-get($map: $blueGreyMap, $key: "600");
+	}
+}

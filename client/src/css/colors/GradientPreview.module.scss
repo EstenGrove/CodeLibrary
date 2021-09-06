@@ -1,0 +1,29 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.GradientPreview {
+	width: 55rem;
+	height: 35rem;
+	border-radius: 1rem;
+	border: 1px solid #ccc;
+	box-shadow: map-get($map: $shadows, $key: "light");
+
+	&_top {
+		width: 100%;
+		height: 4rem;
+		@include flex_row(flex-start, center);
+		padding: 0.5rem 1rem;
+		font-size: 1.6rem;
+		font-weight: 600;
+		color: map-get($map: $blueGreyMap, $key: "100");
+		border-radius: 1rem 1rem 0 0;
+		background-color: map-get($map: $blueGreyMap, $key: "700");
+	}
+	&_preview {
+		width: 100%;
+		height: 88.5%;
+		max-height: 100%;
+		border-radius: 0 0 1rem 1rem;
+	}
+}

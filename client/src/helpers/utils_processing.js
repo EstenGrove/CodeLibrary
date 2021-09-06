@@ -1,3 +1,4 @@
+import { extractRGB, hexToRGB, hexToRGBA, isHexColor } from "./utils_colors";
 import { isEmptyArray, isEmptyVal } from "./utils_types";
 
 // ARRAY UTILS //
@@ -52,6 +53,89 @@ const addEllipsis = (str, maxLength = 30) => {
 	if (str.length < maxLength) return str;
 	const managedStr = enforceStrMaxLength(str, maxLength);
 	return managedStr + "...";
+};
+
+// capitalizes 1st letter
+const capitalize = (str) => {
+	return str.substring(0, 1).toUpperCase() + str.substring(1);
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////// SHADOWS UTILS  //////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// SHADOW PROCESSING & CONVERTERS //
+const shadowVendorPrefixes = {
+	webkit: "-webkit-box-shadow",
+	mozilla: "-moz-box-shadow",
+	default: "box-shadow",
+};
+
+/**
+ * Generates vendor-prefixed box-shadows from base shadow css.
+ * @param {String} shadow - A box-shadow setting.
+ * @returns {String} - Returns a string w/ vendor-prefixed box-shadows from base box-shadow.
+ */
+const getAllShadows = (shadow) => {
+	const webkit = `${shadowVendorPrefixes.webkit}: ${shadow};`;
+	const moz = `${shadowVendorPrefixes.mozilla}: ${shadow};`;
+	const base = `box-shadow: ${shadow};`;
+
+	const all = `${webkit}\n${moz}\n${base}`;
+
+	return all;
+};
+
+/**
+ * Converts shadow settings into an box-shadow w/ alpha channel rgba()
+ * @param {Object} vals - An object of values.
+ */
+const getShadow = (vals) => {
+	const {
+		horizontalOffset: x,
+		verticalOffset: y,
+		blurRadius: blur,
+		spreadRadius: spread,
+		shadowColor,
+		shadowOpacity: opacity,
+	} = vals;
+
+	// valid hex color, get converted to rgba
+	if (isHexColor(shadowColor)) {
+		const rgb = hexToRGB(shadowColor);
+		const { r, g, b } = extractRGB(rgb);
+		return `${x}px ${y}px ${blur}px ${spread}px rgba(${r},${g},${b},${opacity})`;
+	}
+	// const fallback = "#000000";
+	return `${x}px ${y}px ${blur}px ${spread}px ${shadowColor}`;
+};
+
+const gradients = {
+	Linear: "linear-gradient",
+	Radial: "radial-gradient",
+	"Repeating Linear": "repeating-linear-gradient",
+	"Repeating Radial": "repeating-radial-gradient",
+};
+
+/**
+ * Extracts user-selected settings & forms background gradient css property.
+ * @param {Object} vals - An object of gradient settings.
+ */
+const getGradient = (vals = {}) => {
+	const {
+		type,
+		firstColor,
+		secondColor,
+		firstColorOpacity,
+		secondColorOpacity,
+		angle,
+	} = vals;
+	const color1 = hexToRGBA(firstColor, firstColorOpacity);
+	const color2 = hexToRGBA(secondColor, secondColorOpacity);
+
+	const css = `${gradients[type]}(${angle}deg, ${color1}, ${color2})`;
+
+	return css;
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -188,7 +272,15 @@ export { range, groupBy };
 
 export { debounce };
 
-export { enforceStrMaxLength, addEllipsis };
+// string utils
+export { enforceStrMaxLength, addEllipsis, capitalize };
+
+// box-shadow utils
+
+export { shadowVendorPrefixes, getAllShadows, getShadow };
+
+// gradient utils
+export { getGradient, gradients };
 
 export {
 	// sort arrays (non-objects)

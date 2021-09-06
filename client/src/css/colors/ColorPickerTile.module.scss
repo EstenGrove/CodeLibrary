@@ -1,0 +1,18 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.ColorPickerTile {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 0.8rem;
+	border: 1px solid #ccc;
+	&:hover {
+		cursor: pointer;
+		border: 1px solid map-get($map: $blueGreyMap, $key: "600");
+	}
+	&_isActive {
+		@extend .ColorPickerTile;
+		box-shadow: map-get($map: $shadows, $key: "mainOutline");
+	}
+}

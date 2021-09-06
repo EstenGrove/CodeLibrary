@@ -1,0 +1,26 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.Form {
+	width: 55rem;
+	min-height: 15rem;
+	height: auto;
+	border-radius: 1rem;
+	background-color: #ffffff;
+	padding: 4rem 2rem;
+
+	&_fieldset {
+		border: none;
+
+		&:disabled {
+			opacity: 0.4;
+			cursor: not-allowed;
+		}
+	}
+
+	&:disabled {
+		opacity: 0.4;
+		cursor: not-allowed;
+	}
+}

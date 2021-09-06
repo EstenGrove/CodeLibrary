@@ -1,0 +1,12 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.ResizableBox {
+	margin-top: 2rem;
+	width: 20rem;
+	height: 20rem;
+	border-radius: 1rem;
+	padding: 2rem 1rem;
+	background-color: map-get($map: $blueGreyMap, $key: "400");
+}

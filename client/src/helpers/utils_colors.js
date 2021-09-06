@@ -119,6 +119,12 @@ const hexToRGBA = (hex, opacity = 1) => {
 	return rgba;
 };
 
+const isHexColor = (strColor) => {
+	const hexReg = /^#([0-9A-Fa-f]{3}){1,2}$/i;
+	const isHex = hexReg.test(strColor);
+	return isHex;
+};
+
 /**
  * Extracts just the 'R', 'G' and 'B' values from an rgb string.
  * @param {String} rgb - A string RGB color (eg. 'rgb(254, 68, 192)')
@@ -153,6 +159,6 @@ const getRandomHexColor = () => {
 };
 
 export { hslToHex, hexToHsl, rgbToHex, hexToRGB, hexToRGBA };
-export { extractRGB, removeHexHash, removeHex };
+export { extractRGB, removeHexHash, removeHex, isHexColor };
 
 export { getRandomHexColor };

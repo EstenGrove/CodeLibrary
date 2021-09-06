@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../css/pages/PreviewsPage.module.scss";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation, useRouteMatch } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import SnippetsPreviewView from "../views/SnippetsPreviewView";
 import NewSnippetPage from "./NewSnippetPage";
@@ -12,8 +12,7 @@ import SnippetDetailsPage from "./SnippetDetailsPage";
 // - Enables clicking a snippet for details or to edit it.
 
 const PreviewsPage = () => {
-	const location = useLocation();
-	const { pathname } = location; // route: "/snippets"
+	const match = useRouteMatch();
 
 	return (
 		<div className={styles.PreviewsPage}>
@@ -21,8 +20,8 @@ const PreviewsPage = () => {
 
 			{/* DEFINE SUB-ROUTES */}
 			<Switch>
-				<Route path={`${pathname}/new`} component={NewSnippetPage} />
-				<Route path={`${pathname}/details`} component={SnippetDetailsPage} />
+				<Route path={`${match.path}/new`} component={NewSnippetPage} />
+				<Route path={`${match.path}/details`} component={SnippetDetailsPage} />
 			</Switch>
 		</div>
 	);

@@ -1,0 +1,51 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.ShadowSettingsPanel {
+	width: 50%;
+	margin-bottom: 4rem;
+
+	&_title {
+		font-size: 1.6rem;
+		font-weight: 500;
+		color: map-get($map: $blueGreyMap, $key: "500");
+		margin-bottom: 3rem;
+	}
+
+	&_controls {
+		width: 100%;
+		@include flex_row(space-between, center);
+		padding: 0 2rem;
+		margin-right: 4rem;
+		margin-bottom: 2rem;
+	}
+	&_settings {
+		width: 100%;
+
+		&_title {
+			font-size: 1.8rem;
+			font-weight: 600;
+			color: map-get($map: $blueGreyMap, $key: "800");
+			margin-bottom: 3rem;
+		}
+	}
+	&_shadow {
+		width: 100%;
+		height: auto;
+
+		&_label {
+			font-size: 1.5rem;
+			font-weight: 600;
+			color: map-get($map: $blueGreyMap, $key: "600");
+			margin-bottom: 2rem;
+		}
+
+		&_heading {
+			font-size: 1.8rem;
+			font-weight: 600;
+			color: map-get($map: $blueGreyMap, $key: "800");
+			margin-bottom: 3rem;
+		}
+	}
+}

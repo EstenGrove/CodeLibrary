@@ -1,0 +1,15 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.ColorPicker {
+	width: 15rem;
+	height: auto;
+	padding: 0.2rem;
+	@include flex_row(flex-start, flex-start);
+
+	&_options {
+		position: relative;
+		z-index: 20;
+	}
+}

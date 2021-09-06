@@ -1,0 +1,10 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.ColorPreview {
+	width: 40rem;
+	height: 40rem;
+	border-radius: 1rem;
+	box-shadow: map-get($map: $shadows, $key: "heavy");
+}

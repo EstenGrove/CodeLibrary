@@ -19,6 +19,7 @@ const SnippetCard = ({
 	snippetTypes = [],
 	languages = [],
 	tags = [],
+	dispatchToState,
 }) => {
 	const { formState, setFormState, handleChange } = useForm({
 		name: snippet?.name,

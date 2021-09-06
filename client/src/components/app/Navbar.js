@@ -46,7 +46,7 @@ const Navbar = () => {
 							rel="noreferrer"
 							className={styles.MobileNavbar_list_logo_link}
 						>
-							sgore.dev<b>{">"}</b>
+							library<b>{">"}</b>
 						</a>
 					</li>
 					<li className={styles.MobileNavbar_list_menu}>
@@ -68,7 +68,8 @@ const Navbar = () => {
 						rel="noreferrer"
 						className={styles.Navbar_list_logo_link}
 					>
-						sgore.dev<b>{">"}</b>
+						{/* sgore.dev<b>{">"}</b> */}
+						library<b>{">"}</b>
 					</a>
 				</li>
 				<li className={styles.Navbar_list_item}>

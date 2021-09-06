@@ -23,6 +23,8 @@ import CustomDropdown from "../components/shared/CustomDropdown";
 import TagCreator from "../components/tags/TagCreator";
 import EditTag from "../components/tags/EditTag";
 import TagSelector from "../components/tags/TagSelector";
+import ColorPicker from "../components/colors/ColorPicker";
+import ShadowPreview from "../components/shadows/ShadowPreview";
 
 const mockTypes = [
 	{
@@ -167,7 +169,9 @@ const DemoPage = () => {
 			</header>
 
 			<div className={styles.DemoPage_main}>
-				<CustomDropdown />
+				{/* <CustomDropdown /> */}
+				{/* <ColorPicker /> */}
+				<ShadowPreview />
 			</div>
 
 			<div className={styles.DemoPage_main}>

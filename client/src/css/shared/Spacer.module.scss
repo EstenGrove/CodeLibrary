@@ -2,7 +2,6 @@
 @import "../../sass/mixins";
 @import "../../sass/custom";
 
-.NewSnippetPage {
-	@include fill_container;
-	padding: 4rem 2rem;
+.Spacer {
+	display: block;
 }
