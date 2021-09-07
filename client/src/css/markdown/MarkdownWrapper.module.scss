@@ -7,6 +7,10 @@
 	border-radius: 1rem;
 	padding: 1rem 0.5rem;
 	background-color: #ffffff;
+	&::selection {
+		background-color: map-get($map: $blueMap, $key: "600");
+		color: #ffffff;
+	}
 
 	&_header {
 		width: 100%;
@@ -17,6 +21,15 @@
 	&_toolbar {
 		width: 100%;
 		height: auto;
+	}
+	&_editor {
+		width: 100%;
+		height: auto;
+		border-radius: 0.5rem;
+
+		&:focus-within {
+			box-shadow: map-get($map: $shadows, $key: "blueOutline");
+		}
 	}
 	&_footer {
 		width: 100%;

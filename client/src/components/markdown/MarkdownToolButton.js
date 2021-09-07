@@ -173,6 +173,7 @@ const MarkdownToolButton = ({ handleClick, icon, hoverTitle }) => {
 			type="button"
 			className={styles.MarkdownToolButton}
 			title={hoverTitle}
+			onClick={handleClick}
 		>
 			<svg className={styles.MarkdownToolButton_icon}>
 				<use xlinkHref={`${sprite}#icon-${icons[icon]}`}></use>

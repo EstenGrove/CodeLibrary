@@ -13,7 +13,11 @@ const customCSS = {
 	},
 };
 
-const MarkdownToolbar = () => {
+const MarkdownToolbar = ({
+	initHyperLink,
+	selectEditorTool,
+	downloadMarkdown,
+}) => {
 	return (
 		<section className={styles.MarkdownToolbar}>
 			<div className={styles.MarkdownToolbar_inner}>
@@ -23,17 +27,45 @@ const MarkdownToolbar = () => {
 				</div>
 				<div className={styles.MarkdownToolbar_inner_right}>
 					<div className={styles.MarkdownToolbar_inner_right_file}>
-						<MarkdownToolButton icon="cloudDownload" hoverTitle="Download" />
-						<MarkdownToolButton icon="save" hoverTitle="Save File" />
+						<MarkdownToolButton
+							icon="fileDownload"
+							hoverTitle="Download"
+							handleClick={downloadMarkdown}
+						/>
 					</div>
 					<ToolbarDivider />
 					<div className={styles.MarkdownToolbar_inner_right_actions}>
-						<MarkdownToolButton icon="underline" hoverTitle="Underline" />
-						<MarkdownToolButton icon="italic" hoverTitle="Italic" />
-						<MarkdownToolButton icon="bold" hoverTitle="Bold" />
-						<MarkdownToolButton icon="listNumbers" hoverTitle="Numbered List" />
-						<MarkdownToolButton icon="listBullets" hoverTitle="Bullet List" />
-						<MarkdownToolButton icon="quote" hoverTitle="Blockquote" />
+						<MarkdownToolButton
+							icon="link"
+							hoverTitle="Hyperlink"
+							handleClick={initHyperLink}
+						/>
+						<MarkdownToolButton
+							icon="underline"
+							hoverTitle="Underline"
+							handleClick=""
+						/>
+						<MarkdownToolButton
+							icon="italic"
+							hoverTitle="Italic"
+							handleClick=""
+						/>
+						<MarkdownToolButton handleClick="" icon="bold" hoverTitle="Bold" />
+						<MarkdownToolButton
+							icon="listNumbers"
+							hoverTitle="Numbered List"
+							handleClick=""
+						/>
+						<MarkdownToolButton
+							icon="listBullets"
+							hoverTitle="Bullet List"
+							handleClick=""
+						/>
+						<MarkdownToolButton
+							icon="quote"
+							hoverTitle="Blockquote"
+							handleClick=""
+						/>
 					</div>
 					<ToolbarDivider />
 					<div className={styles.MarkdownToolbar_inner_right_menu}>

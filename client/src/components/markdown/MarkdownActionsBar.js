@@ -19,10 +19,10 @@ const SaveButton = ({ saveChanges, isDisabled = true }) => {
 	);
 };
 
-const MarkdownActionsBar = ({ saveChanges }) => {
+const MarkdownActionsBar = ({ saveChanges, wasEdited }) => {
 	return (
 		<footer className={styles.MarkdownActionsBar}>
-			<SaveButton saveChanges={saveChanges} />
+			<SaveButton isDisabled={!wasEdited} saveChanges={saveChanges} />
 		</footer>
 	);
 };

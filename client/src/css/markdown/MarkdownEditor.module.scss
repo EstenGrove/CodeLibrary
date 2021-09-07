@@ -18,6 +18,7 @@
 			background-color: #ffffff;
 			overflow-x: auto;
 			overflow-y: auto;
+			border-radius: 0.5rem;
 			border: none;
 			outline: none;
 			font-size: 1.6rem;
@@ -25,6 +26,11 @@
 			color: map-get($map: $blueGreyMap, $key: "700");
 			font-family: "Dank Mono", "Courier New", Courier, monospace;
 			resize: none;
+
+			&::selection {
+				background-color: map-get($map: $blueMap, $key: "600");
+				color: #ffffff;
+			}
 
 			/* Background Tracking */
 			&::-webkit-scroll-track {

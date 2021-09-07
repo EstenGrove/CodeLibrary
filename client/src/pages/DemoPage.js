@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../css/pages/DemoPage.module.scss";
 import { PropTypes } from "prop-types";
 import img1 from "../assets/images/MusicPlayer-Snippet.png";
@@ -19,6 +19,7 @@ import {
 import SnippetCard from "../components/snippets/SnippetCard";
 import CreateSnippet from "../components/snippets/CreateSnippet";
 import SearchInput from "../components/shared/SearchInput";
+import FileDropZone from "../components/shared/FileDropZone";
 import CustomDropdown from "../components/shared/CustomDropdown";
 import TagCreator from "../components/tags/TagCreator";
 import EditTag from "../components/tags/EditTag";
@@ -27,6 +28,13 @@ import ColorPicker from "../components/colors/ColorPicker";
 import ShadowPreview from "../components/shadows/ShadowPreview";
 import MarkdownEditor from "../components/markdown/MarkdownEditor";
 import MarkdownWrapper from "../components/markdown/MarkdownWrapper";
+import { isEmptyObj, isEmptyVal } from "../helpers/utils_types";
+import {
+	createBlob,
+	createReaderText,
+	createURL,
+	readAsTextCallback,
+} from "../helpers/utils_files";
 
 const mockTypes = [
 	{
@@ -187,6 +195,21 @@ const mockMdFile = {
 const DemoPage = () => {
 	const [search, setSearch] = useState("");
 	const [selectedTags, setSelectedTags] = useState([]);
+	const [file, setFile] = useState(null);
+
+	const handleFileUpload = (e) => {
+		setFile(e.target.files[0]);
+	};
+
+	const handleDragOver = (e) => {
+		// console.log(`Drag over:`, e);
+		// console.log(`Handle Drop:`, e.dataTransfer.files);
+	};
+
+	const handleDrop = (e) => {
+		setFile(e.dataTransfer.files?.[0]);
+		console.log(`Handle Drop:`, e.dataTransfer.files);
+	};
 
 	const searchHandler = (name, val) => {
 		setSearch(val);
@@ -197,6 +220,19 @@ const DemoPage = () => {
 		setSelectedTags(tag);
 	};
 
+	useEffect(() => {
+		let isMounted = true;
+		if (!isMounted) {
+			return;
+		}
+
+		console.log(`File:`, file);
+
+		return () => {
+			isMounted = false;
+		};
+	}, [file]);
+
 	return (
 		<div className={styles.DemoPage}>
 			<header className={styles.DemoPage_header}>
@@ -206,7 +242,28 @@ const DemoPage = () => {
 			</header>
 
 			<div className={styles.DemoPage_main}>
-				<MarkdownWrapper markdownFile={mockMdFile} />
+				<FileDropZone
+					name="fileUpload"
+					id="fileUpload"
+					handleFile={handleFileUpload}
+					handleFileDrop={handleDrop}
+					handleDragOver={handleDragOver}
+					hasFile={!isEmptyVal(file?.fileName)}
+				/>
+			</div>
+			<div className={styles.DemoPage_main}>
+				{file && (
+					<MarkdownWrapper
+						markdownFile={{
+							fileName: file?.name,
+							dateCreated: file?.lastModifiedDate,
+							lastModifiedDate: file?.lastModifiedDate,
+							fileSize: file?.size,
+							fileType: file?.type,
+							src: file,
+						}}
+					/>
+				)}
 			</div>
 
 			<div className={styles.DemoPage_main}>
@@ -236,8 +293,6 @@ const DemoPage = () => {
 			<div className={styles.DemoPage_main}>
 				<CreateSnippet allTags={mockTags} />
 				<TagCreator colorOptions={colorOptions} />
-				{/*  */}
-				{/*  */}
 			</div>
 		</div>
 	);

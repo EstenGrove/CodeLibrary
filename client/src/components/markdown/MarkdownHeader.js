@@ -5,8 +5,9 @@ import { PropTypes } from "prop-types";
 import { format } from "date-fns";
 import {
 	convertAndFormatBytes,
-	convertAndFormatKiloBytes,
+	formatToPracticalSizeUnit,
 } from "../../helpers/utils_files";
+// components
 import MarkdownFileNameSelector from "./MarkdownFileNameSelector";
 
 // REQUIREMENTS:
@@ -21,7 +22,7 @@ import MarkdownFileNameSelector from "./MarkdownFileNameSelector";
 
 const PreviewButton = ({ openPreview }) => {
 	return (
-		<button className={styles.PreviewButton}>
+		<button className={styles.PreviewButton} onClick={openPreview}>
 			<svg className={styles.PreviewButton_icon}>
 				<use xlinkHref={`${sprite}#icon-scatter_plot`}></use>
 			</svg>
@@ -38,7 +39,7 @@ const DraftStatus = ({ status }) => {
 				return (
 					<div className={styles.DraftStatusUnSaved}>
 						<svg className={styles.DraftStatusUnSaved_icon}>
-							<use xlinkHref={`${sprite}#icon-error_outline`}></use>
+							<use xlinkHref={`${sprite}#icon-priority_high`}></use>
 						</svg>
 						<span className={styles.DraftStatusUnSaved_text}>
 							Unsaved Changes
@@ -51,7 +52,7 @@ const DraftStatus = ({ status }) => {
 				return (
 					<div className={styles.DraftStatusSaved}>
 						<svg className={styles.DraftStatusSaved_icon}>
-							<use xlinkHref={`${sprite}#icon-check`}></use>
+							<use xlinkHref={`${sprite}#icon-done_all`}></use>
 						</svg>
 						<span className={styles.DraftStatusSaved_text}>Saved Changes</span>
 					</div>
@@ -62,7 +63,7 @@ const DraftStatus = ({ status }) => {
 				return (
 					<div className={styles.DraftStatusUnChanged}>
 						<svg className={styles.DraftStatusUnChanged_icon}>
-							<use xlinkHref={`${sprite}#icon-done_all`}></use>
+							<use xlinkHref={`${sprite}#icon-check`}></use>
 						</svg>
 						<span className={styles.DraftStatusUnChanged_text}>No Changes</span>
 					</div>
@@ -79,11 +80,14 @@ const DraftStatus = ({ status }) => {
 const MarkdownHeader = ({
 	vals = {},
 	formState = {},
+	wasEdited,
 	changeFileName,
 	handleChange,
 }) => {
 	const { fileName, fileSize, dateCreated, lastModifiedDate } = vals;
-	const [status, setStatus] = useState("UNCHANGED");
+	const [status, setStatus] = useState(() => {
+		return wasEdited ? "UNSAVED" : "UNCHANGED";
+	});
 
 	console.log("vals", vals);
 
@@ -108,7 +112,7 @@ const MarkdownHeader = ({
 						Last Modified: {format(lastModifiedDate, "MM/DD/YYYY h:mm A")}
 					</div>
 					<div className={styles.MarkdownHeader_header_about_fileSize}>
-						Size: {convertAndFormatBytes(fileSize, "KB")}
+						Size: {formatToPracticalSizeUnit(fileSize)}
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,29 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.MarkdownLinkEditor {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 45rem;
+	height: 20rem;
+	border-radius: 1rem;
+	padding: 1rem 2rem;
+	background-color: map-get($map: $blueGreyMap, $key: "800");
+	box-shadow: map-get($map: $shadows, $key: "heavy");
+	z-index: 100;
+
+	&_url,
+	&_text {
+		width: 100%;
+		height: auto;
+		margin-bottom: 1rem;
+	}
+	&_actions {
+		width: 100%;
+		height: 5rem;
+		@include flex_row(flex-end, center);
+	}
+}

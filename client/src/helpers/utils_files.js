@@ -4,7 +4,7 @@
  * @param {String} mimeType - A custom mimetype used to set the new Blob instance to.
  * @returns {Blob} - returns a file blob, w/ a custom mimetype.
  */
-const createBlob = (data, mimeType = "application/octet-stream") => {
+const createBlob = (data, mimeType = "text/markdown; charset=UTF-8") => {
 	return new Blob([data], { type: mimeType });
 };
 
@@ -32,6 +32,43 @@ const saveFile = (blob, filename) => {
 	return window.URL.revokeObjectURL(fileURL);
 };
 
+// FILE READER API METHODS
+
+const createReaderText = (blob) => {
+	const reader = new FileReader();
+	reader.readAsText(blob);
+
+	reader.onload = () => {
+		console.log("reader.result", reader.result);
+		return reader.result;
+	};
+};
+
+const readAsTextCallback = (blob, callback) => {
+	const reader = new FileReader();
+	reader.readAsText(blob);
+
+	reader.onload = () => {
+		console.log("reader.result", reader.result);
+		return callback(reader.result);
+	};
+};
+
+// promisfied readAsText handler
+const readAsTextHandler = (blob) => {
+	const reader = new FileReader();
+	return new Promise((resolve, reject) => {
+		reader.onerror = () => {
+			reader.abort();
+			return reject(new Error(`❌ Ooops! Could not resolve file blob:`, blob));
+		};
+		reader.onload = () => {
+			return resolve(reader.result);
+		};
+		return reader.readAsText(blob);
+	});
+};
+
 // converts bytes to target unit & formats w/ unit abbreviation
 const convertAndFormatBytes = (bytes, to = "KB") => {
 	switch (to) {
@@ -47,7 +84,7 @@ const convertAndFormatBytes = (bytes, to = "KB") => {
 			return `${size} MB`;
 		}
 		case "GB": {
-			const size = (bytes / 1024 / 1024 / 1024).toFixed(4);
+			const size = (bytes / 1024 / 1024 / 1024).toFixed(2);
 			return `${size} GB`;
 		}
 		default:
@@ -75,19 +112,41 @@ const convertAndFormatKiloBytes = (kb, to = "MB") => {
 
 // this utils determines how big the file is
 // ...then determines what unit to convert it to to make the most sense
-// accepts 'bytes' (or 'kb'???) as the default size unit
-const formatToPracticalSize = (size) => {
+const formatToPracticalSizeUnit = (sizeInBytes) => {
+	// NOTE: all sizeInBytess are in 'BYTES
 	switch (true) {
-		// convert to kb
-		case size >= 1000: {
-			return;
+		// less/equal to: 100 bytes then keep as Bytes
+		case sizeInBytes <= 100: {
+			return convertAndFormatBytes(sizeInBytes, "B");
+		}
+		// less/equal to: 10,000 bytes then convert to KB
+		case sizeInBytes <= 10000: {
+			return convertAndFormatBytes(sizeInBytes, "KB");
+		}
+		// less/equal to: 100,000 bytes then convert to MB
+		case sizeInBytes <= 100000: {
+			return convertAndFormatBytes(sizeInBytes, "MB");
+		}
+		// less/equal to: 100,000,000 bytes then convert to GB
+		case sizeInBytes <= 100000000: {
+			return convertAndFormatBytes(sizeInBytes, "GB");
+		}
+		// less/equal to: 100,000,000 bytes then convert to GB
+		case sizeInBytes >= 100000000: {
+			return convertAndFormatBytes(sizeInBytes, "GB");
 		}
 
 		default:
-			return size;
+			return convertAndFormatBytes(sizeInBytes, "B");
 	}
 };
 
 export { createBlob, createURL, saveFile };
 
-export { convertAndFormatBytes, convertAndFormatKiloBytes };
+export { createReaderText, readAsTextCallback, readAsTextHandler };
+
+export {
+	convertAndFormatBytes,
+	convertAndFormatKiloBytes,
+	formatToPracticalSizeUnit,
+};

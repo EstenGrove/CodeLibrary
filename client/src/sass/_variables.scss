@@ -33,6 +33,7 @@ $orange_outline: 0 0 0 2px hsla(11, 100%, 75%, 0.6);
 $yellow_outline: 0 0 0 2px hsla(39, 100%, 70%, 1);
 // alt outline
 $main_altOutline: 0 0 0 4px rgba(196, 181, 253, 1);
+$blue_outline: 0 0 0 2px rgba(37, 99, 235, 1);
 
 // box-shadows map
 $shadows: (
@@ -52,6 +53,7 @@ $shadows: (
 	subtleInset: $inset_shadow,
 	focusMode: $focusMode,
 	purpleRain: $purpleRain,
+	blueOutline: $blue_outline,
 );
 
 $hoverShadows: (
