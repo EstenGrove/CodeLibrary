@@ -8,7 +8,6 @@ const PageCard = ({ baseRoute, card = {} }) => {
 	const match = useRouteMatch(baseRoute);
 
 	const fullRoute = `${baseRoute}${route}`;
-	console.log("fullRoute", fullRoute);
 
 	return (
 		<article className={styles.PageCard}>

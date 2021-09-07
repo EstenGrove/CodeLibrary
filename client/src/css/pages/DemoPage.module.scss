@@ -4,6 +4,7 @@
 
 .DemoPage {
 	@include fill_container;
+	padding: 4rem 2rem;
 
 	&_header {
 		width: 100%;

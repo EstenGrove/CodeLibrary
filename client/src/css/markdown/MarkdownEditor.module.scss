@@ -1,0 +1,9 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.MarkdownEditor {
+	@include fill_container;
+	border-radius: 1rem;
+	padding: 1rem 0.5rem;
+}

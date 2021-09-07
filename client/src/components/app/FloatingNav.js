@@ -9,8 +9,8 @@ const mobileSize = {
 	height: 700,
 };
 
-// pages to hide buttons on
-const hideOnThesePages = [];
+// pages to hide buttons on: 'HomePage'
+const hideOnThesePages = ["/"];
 
 const showBackBtn = (history, hideOnThesePages = []) => {
 	const { state } = history.location;
@@ -69,11 +69,12 @@ const FloatingNav = ({ history, enableBack = true, enableForward = true }) => {
 		}
 	};
 
-	// history.listen((location, action) => {
-	// 	if (location?.pathname && location?.pathname?.includes("/")) {
-	// 		// remove in PRODUCTION
-	// 	}
-	// });
+	// history listener
+	history.listen((location, action) => {
+		if (location?.pathname && location?.pathname?.includes("/")) {
+			// remove in PRODUCTION
+		}
+	});
 
 	return (
 		<nav aria-roledescription="navigation" className={styles.FloatingNav}>
@@ -84,7 +85,7 @@ const FloatingNav = ({ history, enableBack = true, enableForward = true }) => {
 					</svg>
 				</button>
 			)}
-			{showForwardBtn(hideOnThesePages, hideOnThesePages) && (
+			{showForwardBtn(history, hideOnThesePages) && (
 				<button className={styles.FloatingNav_btn_right} onClick={goForward}>
 					<svg className={styles.FloatingNav_btn_right_icon}>
 						<use xlinkHref={`${sprite}#icon-arrow_forward`}></use>

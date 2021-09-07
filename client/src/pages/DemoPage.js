@@ -25,6 +25,7 @@ import EditTag from "../components/tags/EditTag";
 import TagSelector from "../components/tags/TagSelector";
 import ColorPicker from "../components/colors/ColorPicker";
 import ShadowPreview from "../components/shadows/ShadowPreview";
+import MarkdownEditor from "../components/markdown/MarkdownEditor";
 
 const mockTypes = [
 	{
@@ -147,6 +148,33 @@ const mockSnippet = {
 	isActive: true,
 };
 
+const mockMarkdownSrc = `
+# Main Title
+This is the sample document text in markdown format.
+
+*This is italic text*
+
+**Bold text goes here**
+
+- Item one
+- Item two
+- Item three
+
+[Link to my website](https://sgore.dev)
+
+> This is line one of block quote
+> Line two of block quote
+
+## Sub heading
+
+\`\`\`javascript
+const matchesPattern = (val, pattern) => {
+  const newPattern = new RegExp(pattern);
+  return newPattern.test(val);
+}
+\`\`\`
+`;
+
 const DemoPage = () => {
 	const [search, setSearch] = useState("");
 	const [selectedTags, setSelectedTags] = useState([]);
@@ -169,9 +197,7 @@ const DemoPage = () => {
 			</header>
 
 			<div className={styles.DemoPage_main}>
-				{/* <CustomDropdown /> */}
-				{/* <ColorPicker /> */}
-				<ShadowPreview />
+				<MarkdownEditor markdownSrc={mockMarkdownSrc} />
 			</div>
 
 			<div className={styles.DemoPage_main}>
