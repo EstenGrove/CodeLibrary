@@ -105,7 +105,7 @@ const icons = {
 	checkDone: "done",
 	checkDoneAll: "done_all",
 	// others
-	blockquote: "quote",
+	blockquote: "format_quote",
 	quote: "format_quote",
 	scatterplot: "scatter_plot",
 	attachment: "attachment",

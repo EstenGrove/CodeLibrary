@@ -1,0 +1,25 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.MarkdownWrapper {
+	@include fill_container;
+	border-radius: 1rem;
+	padding: 1rem 0.5rem;
+	background-color: #ffffff;
+
+	&_header {
+		width: 100%;
+		height: auto;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid #ccc;
+	}
+	&_toolbar {
+		width: 100%;
+		height: auto;
+	}
+	&_footer {
+		width: 100%;
+		height: 6rem;
+	}
+}

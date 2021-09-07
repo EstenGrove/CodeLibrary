@@ -26,6 +26,7 @@ import TagSelector from "../components/tags/TagSelector";
 import ColorPicker from "../components/colors/ColorPicker";
 import ShadowPreview from "../components/shadows/ShadowPreview";
 import MarkdownEditor from "../components/markdown/MarkdownEditor";
+import MarkdownWrapper from "../components/markdown/MarkdownWrapper";
 
 const mockTypes = [
 	{
@@ -175,6 +176,14 @@ const matchesPattern = (val, pattern) => {
 \`\`\`
 `;
 
+const mockMdFile = {
+	fileName: `MultiSelect-Component.md`,
+	fileSize: 277, // bytes
+	dateCreated: new Date(2020, 8, 27, 9, 46),
+	lastModifiedDate: new Date(2021, 5, 14, 16, 22),
+	src: mockMarkdownSrc,
+};
+
 const DemoPage = () => {
 	const [search, setSearch] = useState("");
 	const [selectedTags, setSelectedTags] = useState([]);
@@ -197,7 +206,7 @@ const DemoPage = () => {
 			</header>
 
 			<div className={styles.DemoPage_main}>
-				<MarkdownEditor markdownSrc={mockMarkdownSrc} />
+				<MarkdownWrapper markdownFile={mockMdFile} />
 			</div>
 
 			<div className={styles.DemoPage_main}>
