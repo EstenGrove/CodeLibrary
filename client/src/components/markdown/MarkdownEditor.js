@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../../css/markdown/MarkdownEditor.module.scss";
 import { PropTypes } from "prop-types";
-import MarkdownToolbar from "./MarkdownToolbar";
 
 const MarkdownEditor = ({
 	name,
@@ -32,6 +31,17 @@ const MarkdownEditor = ({
 
 export default MarkdownEditor;
 
-MarkdownEditor.defaultProps = {};
+MarkdownEditor.defaultProps = {
+	isDisabled: false,
+	readOnly: false,
+};
 
-MarkdownEditor.propTypes = {};
+MarkdownEditor.propTypes = {
+	name: PropTypes.string,
+	id: PropTypes.string,
+	markdownSrc: PropTypes.string,
+	placeholder: PropTypes.string,
+	isDisabled: PropTypes.bool,
+	readOnly: PropTypes.bool,
+	handleEdits: PropTypes.func,
+};

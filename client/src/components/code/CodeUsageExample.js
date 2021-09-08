@@ -20,4 +20,7 @@ export default CodeUsageExample;
 
 CodeUsageExample.defaultProps = {};
 
-CodeUsageExample.propTypes = {};
+CodeUsageExample.propTypes = {
+	code: PropTypes.string,
+	language: PropTypes.string,
+};
