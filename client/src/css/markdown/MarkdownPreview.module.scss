@@ -48,14 +48,14 @@
 
 		&_title {
 			color: map-get($map: $blueMap, $key: "600");
-			font-size: 1.4rem;
+			font-size: 1.7rem;
 			font-weight: 600;
 			margin-bottom: 0.5rem;
 		}
 
 		&_details {
 			color: map-get($map: $blueGreyMap, $key: "600");
-			font-size: 1.4rem;
+			font-size: 1.6rem;
 		}
 	}
 
@@ -72,7 +72,7 @@
 		&_msg {
 			width: 100%;
 			height: auto;
-			font-size: 1.5rem;
+			font-size: 1.7rem;
 			font-weight: 600;
 			padding-left: 1rem;
 			color: map-get($map: $blueMap, $key: "600");
