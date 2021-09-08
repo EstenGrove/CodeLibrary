@@ -48,6 +48,10 @@ const readAsTextCallback = (blob, callback) => {
 	const reader = new FileReader();
 	reader.readAsText(blob);
 
+	reader.onerror = () => {
+		reader.abort();
+		return new Error(`❌ Ooops! Could not resolve file blob:`, blob);
+	};
 	reader.onload = () => {
 		console.log("reader.result", reader.result);
 		return callback(reader.result);
