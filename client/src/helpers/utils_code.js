@@ -11,6 +11,7 @@ const languageWhiteList = [
 	`nginx`,
 	`apache`,
 	`curl`,
+	`python`,
 ];
 
 const languageMap = {
@@ -26,6 +27,7 @@ const languageMap = {
 	nginx: `nginx`,
 	apache: `apache`,
 	curl: `curl`,
+	python: `python`,
 };
 
 export { languageWhiteList, languageMap };
