@@ -12,7 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // declare routes for each route module here...
-// declare routes for each route module
 app.use("/snippets", snippetsModule);
 app.use("/tags", tagsModule);
 app.use("/languages", langsModule);

@@ -81,8 +81,9 @@ const MarkdownHeader = ({
 	vals = {},
 	formState = {},
 	wasEdited,
-	changeFileName,
+	openPreview,
 	handleChange,
+	changeFileName,
 }) => {
 	const { fileName, fileSize, dateCreated, lastModifiedDate } = vals;
 	const [status, setStatus] = useState(() => {
@@ -121,7 +122,7 @@ const MarkdownHeader = ({
 					<DraftStatus status={status} />
 				</div>
 				<div className={styles.MarkdownHeader_draft_preview}>
-					<PreviewButton />
+					<PreviewButton openPreview={openPreview} />
 				</div>
 			</div>
 		</header>

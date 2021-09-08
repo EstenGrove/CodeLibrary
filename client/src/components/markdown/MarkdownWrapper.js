@@ -2,21 +2,22 @@ import React, { useState, useEffect, useCallback } from "react";
 import styles from "../../css/markdown/MarkdownWrapper.module.scss";
 import { PropTypes } from "prop-types";
 import { useForm } from "../../utils/useForm";
-import {
-	createBlob,
-	createReaderText,
-	readAsTextCallback,
-	readAsTextHandler,
-	saveFile,
-} from "../../helpers/utils_files";
+import { readAsTextHandler } from "../../helpers/utils_files";
 import { saveMarkdownTextAsFile } from "../../helpers/utils_markdown";
+import { isEmptyVal } from "../../helpers/utils_types";
 // components
 import MarkdownToolbar from "./MarkdownToolbar";
 import MarkdownEditor from "./MarkdownEditor";
 import MarkdownHeader from "./MarkdownHeader";
 import MarkdownActionsBar from "./MarkdownActionsBar";
 import MarkdownLinkEditor from "./MarkdownLinkEditor";
-import { isEmptyVal } from "../../helpers/utils_types";
+import MarkdownPreview from "./MarkdownPreview";
+
+// ## TODOS:
+// - Implement 'Undo' & 'Redo' functionality:
+// 		- Add 'useUndo' custom hook
+// 		- Track changes to markdown file
+// 		- Set a limitation for how many changes are saved (eg. 10 changes)
 
 const tools = {
 	LINK: "LINK",
@@ -45,6 +46,8 @@ const MarkdownWrapper = ({ markdownFile = {} }) => {
 	});
 	// opens link tool
 	const [showHyperLinkTool, setShowHyperLinkTool] = useState(false);
+	// show markdown-as-html preview
+	const [showMarkdownPreview, setShowMarkdownPreview] = useState(false);
 	// sets current active tool
 	const [activeTool, setActiveTool] = useState("");
 	const [wasEdited, setWasEdited] = useState(false);
@@ -70,6 +73,7 @@ const MarkdownWrapper = ({ markdownFile = {} }) => {
 		// check if text is selected:
 		//    - IF text selected, then apply tool settings
 		//    - IF no text selected, then apply styles as user types
+		setActiveTool(tool);
 	};
 
 	const initHyperLink = () => {
@@ -87,6 +91,14 @@ const MarkdownWrapper = ({ markdownFile = {} }) => {
 	// download markdown as .md file to user's machine
 	const downloadFileLocally = () => {
 		saveMarkdownTextAsFile(markdownText, values.fileName);
+	};
+
+	const copyText = (text) => {
+		navigator.clipboard.writeText(text);
+	};
+
+	const openMarkdownPreview = () => {
+		setShowMarkdownPreview(true);
 	};
 
 	const saveChanges = async () => {
@@ -130,6 +142,7 @@ const MarkdownWrapper = ({ markdownFile = {} }) => {
 						changeFileName={changeFileName}
 						handleChange={handleChange}
 						wasEdited={wasEdited}
+						openPreview={openMarkdownPreview}
 					/>
 				</div>
 				<div className={styles.MarkdownWrapper_toolbar}>
@@ -138,6 +151,8 @@ const MarkdownWrapper = ({ markdownFile = {} }) => {
 						createHyperLink={createLink}
 						cancelLink={cancelLink}
 						downloadMarkdown={downloadFileLocally}
+						selectEditorTool={selectEditorTool}
+						copyText={() => copyText(markdownText)}
 					/>
 				</div>
 				<div className={styles.MarkdownWrapper_editor}>
@@ -163,6 +178,10 @@ const MarkdownWrapper = ({ markdownFile = {} }) => {
 					handleChange={handleChange}
 					closeLinkEditor={() => setShowHyperLinkTool(false)}
 				/>
+			)}
+
+			{showMarkdownPreview && (
+				<MarkdownPreview closePreview={() => setShowMarkdownPreview(false)} />
 			)}
 		</>
 	);
