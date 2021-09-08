@@ -43,6 +43,13 @@ function debounce(func, wait, immediate) {
 	};
 }
 
+// removes leading/trailing spaces in string
+const purgeLeadingSpaces = (code) => {
+	if (isEmptyVal(code)) return "";
+	const trimmed = code.trim();
+	return trimmed;
+};
+
 const enforceStrMaxLength = (str, maxLength = 30) => {
 	if (str.length < maxLength) return str;
 	return str.slice(0, maxLength);
@@ -273,7 +280,7 @@ export { range, groupBy };
 export { debounce };
 
 // string utils
-export { enforceStrMaxLength, addEllipsis, capitalize };
+export { enforceStrMaxLength, addEllipsis, capitalize, purgeLeadingSpaces };
 
 // box-shadow utils
 

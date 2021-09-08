@@ -19,6 +19,7 @@ import MetaGeneratorPage from "./pages/MetaGeneratorPage";
 import OpenGraphGeneratorPage from "./pages/OpenGraphGeneratorPage";
 // playground page
 import DemoPage from "./pages/DemoPage";
+import PlaygroundPage from "./pages/PlaygroundPage";
 
 const history = createBrowserHistory();
 
@@ -44,6 +45,7 @@ function App() {
 
 							{/* PLAYGROUND PAGE */}
 							<Route path="/demo" component={DemoPage} />
+							<Route path="/playground" component={PlaygroundPage} />
 						</Switch>
 					</Main>
 				</div>

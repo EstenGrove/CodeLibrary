@@ -1,0 +1,52 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.CodeViewer {
+	width: 100%;
+	height: auto;
+	border-radius: 1rem;
+	margin-bottom: 4rem;
+
+	&_window {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+}
+
+.ActionButton {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	padding: 0.6rem 1rem;
+	border-radius: 0.5rem;
+	@include flex_row(center, center);
+	background-color: transparent;
+	border: none;
+	outline: none;
+	&:hover {
+		cursor: pointer;
+	}
+	&:hover &_icon {
+		fill: map-get($map: $blueMap, $key: "600");
+		cursor: pointer;
+	}
+	&:hover &_text {
+		color: map-get($map: $blueMap, $key: "600");
+		cursor: pointer;
+	}
+
+	&_icon {
+		width: 2rem;
+		height: 2rem;
+		fill: map-get($map: $blueGreyMap, $key: "100");
+		margin-right: 0.3rem;
+	}
+	&_text {
+		font-size: 1.5rem;
+		color: map-get($map: $blueGreyMap, $key: "100");
+	}
+}
