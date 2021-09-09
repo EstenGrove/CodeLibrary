@@ -35,4 +35,17 @@
 			margin-top: 2rem;
 		}
 	}
+
+	&_star {
+		width: 100%;
+		height: auto;
+		padding: 0.5rem 2rem;
+		@include flex_row(flex-start, center);
+
+		&_label {
+			font-size: 1.5rem;
+			font-weight: 500;
+			color: map-get($map: $yellowMap, $key: "500");
+		}
+	}
 }

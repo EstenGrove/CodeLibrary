@@ -1,3 +1,5 @@
+// SNIPPET REQUEST UTILS //
+
 // match snippet type utils
 
 const matchSnippetTypeByID = (id, types = []) => {

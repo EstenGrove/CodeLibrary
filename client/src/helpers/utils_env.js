@@ -21,7 +21,7 @@ const { dev, test, prod } = SERVICES_ENV;
 // current 'ENVIRONMENT' name
 const CURRENT_ENV_NAME = "test";
 // current 'ENVIRONMENT' settings
-const CURRENT_ENV = SERVICES_ENV["test"];
+const CURRENT_ENV = SERVICES_ENV[CURRENT_ENV_NAME];
 
 const BASE_URL = CURRENT_ENV.base;
 

@@ -7,12 +7,14 @@ import SnippetDescInput from "./SnippetDescInput";
 import FileEditor from "../files/FileEditor";
 import TagSelector from "../tags/TagSelector";
 import TagsList from "../tags/TagsList";
+import StarredIndicator from "./StarredIndicator";
 
 const SnippetEditor = ({
 	vals = {},
 	handleChange,
 	handleReset,
 	handleFileName,
+	toggleStarStatus,
 	removeAssignedTag,
 	assignTagToSnippet,
 	selectedTags = [],
@@ -50,6 +52,15 @@ const SnippetEditor = ({
 					<TagsList tags={selectedTags} removeTag={removeTagHandler} />
 				</div>
 			</div>
+			<div className={styles.SnippetEditor_star}>
+				<StarredIndicator
+					isStarred={vals?.isStarred}
+					toggleStarStatus={toggleStarStatus}
+				/>
+				<label htmlFor="isStarred" className={styles.SnippetEditor_star_label}>
+					{vals.isStarred ? "Marked as Favorite" : "Mark as Favorite"}
+				</label>
+			</div>
 			<div className={styles.SnippetEditor_main}>
 				<FileEditor
 					vals={vals}
@@ -57,7 +68,6 @@ const SnippetEditor = ({
 					handleFileName={handleFileName}
 				/>
 			</div>
-			{/*  */}
 		</div>
 	);
 };

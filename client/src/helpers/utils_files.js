@@ -1,3 +1,6 @@
+import { snippets } from "./utils_endpoints";
+import { currentEnv } from "./utils_env";
+
 /**
  * @description - A helper for converting data into a file blob w/ a custom mimetype.
  * @param {Blob|Response Object} data - Any transformable data type that can be converted to a blob. Typically a response object or blob.
@@ -30,6 +33,25 @@ const saveFile = (blob, filename) => {
 	link.download = filename;
 	link.click();
 	return window.URL.revokeObjectURL(fileURL);
+};
+
+const uploadFile = async (data) => {
+	let url = currentEnv.base + snippets.create.new;
+	const fileData = new FormData();
+	data.append("file", fileData);
+
+	try {
+		const request = await fetch(url, {
+			method: "POST",
+			headers: {},
+			body: JSON.stringify(fileData),
+		});
+		const response = await request.json();
+		return response;
+	} catch (err) {
+		console.log(`❌ Ooops! Error occurred:`, err);
+		return err;
+	}
 };
 
 // FILE READER API METHODS

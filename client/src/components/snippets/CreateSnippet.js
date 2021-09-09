@@ -3,11 +3,11 @@ import styles from "../../css/snippets/CreateSnippet.module.scss";
 import sprite from "../../assets/icons/code-library.svg";
 import { PropTypes } from "prop-types";
 import { useForm } from "../../utils/useForm";
+import { green, purple, red } from "../../helpers/utils_styles";
 // components
 import SnippetEditor from "./SnippetEditor";
 import Button from "../shared/Button";
 import LockedIndicator from "../snippets/LockedIndicator";
-import { green, purple, red } from "../../helpers/utils_styles";
 import TagSelector from "../tags/TagSelector";
 
 const customCSS = {
@@ -69,6 +69,7 @@ const CreateSnippet = ({ allTags = [] }) => {
 	const { formState, setFormState, handleChange, handleReset } = useForm({
 		snippetTitle: "",
 		snippetDesc: "",
+		newSnippet: "",
 		// snippet markdown (.md) file info
 		fileName: "",
 		isLocked: false,
@@ -106,11 +107,24 @@ const CreateSnippet = ({ allTags = [] }) => {
 			},
 		});
 	};
+	const toggleStarStatus = () => {
+		setFormState({
+			...formState,
+			values: {
+				...values,
+				isStarred: !values?.isStarred,
+			},
+		});
+	};
 
 	// creates snippet entry in database & global state
 	const createSnippet = () => {
 		// init snippet model
 		// populate model fields w/ data
+	};
+	// cancels new snippet entry
+	const cancelSnippet = () => {
+		// reset form & clear data
 	};
 
 	return (
@@ -130,9 +144,15 @@ const CreateSnippet = ({ allTags = [] }) => {
 					availableTags={allTags}
 					selectedTags={snippetTags}
 					assignTagToSnippet={assignTagToSnippet}
+					toggleStarStatus={toggleStarStatus}
 				/>
 			</div>
-			<ActionBar isLocked={values.isLocked} lockSnippet={toggleLockSnippet} />
+			<ActionBar
+				isLocked={values.isLocked}
+				lockSnippet={toggleLockSnippet}
+				saveSnippet={createSnippet}
+				cancelSnippet={cancelSnippet}
+			/>
 		</div>
 	);
 };
