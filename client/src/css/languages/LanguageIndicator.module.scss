@@ -1,0 +1,23 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.LanguageIndicator {
+	width: 100%;
+	height: auto;
+	padding: 1rem 1rem;
+	@include flex_row(flex-start, center);
+
+	&_icon {
+		width: 2rem;
+		height: 2rem;
+		fill: map-get($map: $blueGreyMap, $key: "700");
+		margin-right: 0.5rem;
+	}
+	&_text {
+		font-size: 1.6rem;
+		font-weight: 500;
+		color: map-get($map: $blueMap, $key: "800");
+		color: map-get($map: $blueGreyMap, $key: "700");
+	}
+}

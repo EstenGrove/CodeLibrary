@@ -65,7 +65,7 @@ const ActionBar = ({
 	);
 };
 
-const CreateSnippet = ({ allTags = [] }) => {
+const CreateSnippet = ({ allTags = [], allLangs = [] }) => {
 	const { formState, setFormState, handleChange, handleReset } = useForm({
 		snippetTitle: "",
 		snippetDesc: "",
@@ -142,6 +142,7 @@ const CreateSnippet = ({ allTags = [] }) => {
 					handleFileName={handleFileName}
 					handleReset={handleReset}
 					availableTags={allTags}
+					languages={allLangs}
 					selectedTags={snippetTags}
 					assignTagToSnippet={assignTagToSnippet}
 					toggleStarStatus={toggleStarStatus}

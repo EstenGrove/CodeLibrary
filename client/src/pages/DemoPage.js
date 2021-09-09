@@ -35,6 +35,8 @@ import {
 	createURL,
 	readAsTextCallback,
 } from "../helpers/utils_files";
+import LanguageSelector from "../components/languages/LanguageSelector";
+import { languages } from "../helpers/utils_languages";
 
 const mockTypes = [
 	{
@@ -196,6 +198,7 @@ const DemoPage = () => {
 	const [search, setSearch] = useState("");
 	const [selectedTags, setSelectedTags] = useState([]);
 	const [file, setFile] = useState(null);
+	const [lang, setLang] = useState({});
 
 	const handleFileUpload = (e) => {
 		setFile(e.target.files[0]);
@@ -220,6 +223,10 @@ const DemoPage = () => {
 		setSelectedTags(tag);
 	};
 
+	const handleParentSelect = (selection) => {
+		setLang(selectedTags);
+	};
+
 	useEffect(() => {
 		let isMounted = true;
 		if (!isMounted) {
@@ -240,6 +247,13 @@ const DemoPage = () => {
 					Code Library ~ Demo Page
 				</h1>
 			</header>
+
+			<div className={styles.DemoPage_main}>
+				<LanguageSelector
+					langs={languages}
+					handleParentSelect={handleParentSelect}
+				/>
+			</div>
 
 			<div className={styles.DemoPage_main}>
 				<FileDropZone
@@ -291,7 +305,7 @@ const DemoPage = () => {
 				/>
 			</div>
 			<div className={styles.DemoPage_main}>
-				<CreateSnippet allTags={mockTags} />
+				<CreateSnippet allTags={mockTags} allLangs={languages} />
 				<TagCreator colorOptions={colorOptions} />
 			</div>
 		</div>

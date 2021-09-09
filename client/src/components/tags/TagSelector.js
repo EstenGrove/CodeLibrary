@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../css/tags/TagSelector.module.scss";
-import sprite from "../../assets/icons/carets-arrows.svg";
+// import sprite from "../../assets/icons/carets-arrows.svg";
+import sprite from "../../assets/icons/modals-complete.svg";
 import { PropTypes } from "prop-types";
 import { isEmptyArray, isEmptyVal } from "../../helpers/utils_types";
 import TagSelectorDropdown from "./TagSelectorDropdown";
@@ -9,6 +10,9 @@ import TagSelectorDropdown from "./TagSelectorDropdown";
 // - Custom dropdown w/ available tags to select
 // - Supports:
 //    - One or more tags
+
+const caret = "caret-down";
+const clear = "clearclose";
 
 // determines placeholder text when 'single-select' is enabled
 const getSingleSelectPlaceholder = (placeholder, selectedTags = []) => {
@@ -147,8 +151,6 @@ const TagSelector = ({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedTags]);
 
-	console.log("selectedTags(TagSelector)", selectedTags);
-
 	return (
 		<div className={styles.TagSelector}>
 			<div
@@ -166,9 +168,19 @@ const TagSelector = ({
 				</span>
 				<svg
 					className={styles.TagSelector_input_downCaret}
-					onClick={() => setShowOptions(true)}
+					onClick={() => {
+						if (isEmptyArray(selectedTags)) {
+							return setShowOptions(true);
+						} else {
+							return clearSelections();
+						}
+					}}
 				>
-					<use xlinkHref={`${sprite}#icon-caret-down`}></use>
+					<use
+						xlinkHref={`${sprite}#icon-${
+							isEmptyArray(selectedTags) ? caret : clear
+						}`}
+					></use>
 				</svg>
 			</div>
 			{showOptions && (

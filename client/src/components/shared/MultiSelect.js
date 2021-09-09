@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../css/shared/MultiSelect.module.scss";
-import sprite from "../../assets/icons/carets-arrows.svg";
+// import sprite from "../../assets/icons/carets-arrows.svg";
+import sprite from "../../assets/icons/modals-complete.svg";
 import { PropTypes } from "prop-types";
 import { isEmptyArray, isEmptyVal } from "../../helpers/utils_types";
 import MultiSelectDropdown from "./MultiSelectDropdown";
+
+const caret = "caret-down";
+const clear = "clearclose";
 
 const advancedSearch = (val, options) => {
 	// enables numeric search
@@ -153,8 +157,19 @@ const MultiSelect = ({
 				</span>
 				<svg
 					className={styles.MultiSelect_input_downCaret}
-					onClick={() => setShowOptions(true)}
+					onClick={() => {
+						if (isEmptyArray(selections)) {
+							return setShowOptions(true);
+						} else {
+							return clearSelections();
+						}
+					}}
 				>
+					{/* <use
+						xlinkHref={`${sprite}#icon-${
+							isEmptyArray(selections) ? caret : clear
+						}`}
+					></use> */}
 					<use xlinkHref={`${sprite}#icon-caret-down`}></use>
 				</svg>
 			</div>

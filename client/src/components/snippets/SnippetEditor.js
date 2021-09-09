@@ -1,13 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../../css/snippets/SnippetEditor.module.scss";
 import { PropTypes } from "prop-types";
-import { useForm } from "../../utils/useForm";
+// components
 import SnippetTitleInput from "./SnippetTitleInput";
 import SnippetDescInput from "./SnippetDescInput";
 import FileEditor from "../files/FileEditor";
 import TagSelector from "../tags/TagSelector";
 import TagsList from "../tags/TagsList";
-import StarredIndicator from "./StarredIndicator";
+import LanguageSelector from "../languages/LanguageSelector";
+import FavoriteToggler from "./FavoriteToggler";
+
+const customCSS = {
+	langs: {
+		backgroundColor: "#ffffff",
+	},
+};
+
+const EditorSection = ({ title, customStyles = {}, children }) => {
+	return (
+		<div className={styles.EditorSection} style={customStyles}>
+			<div className={styles.EditorSection_top}>
+				<div className={styles.EditorSection_top_title}>{title}</div>
+			</div>
+			<div className={styles.EditorSection_main}>{children}</div>
+		</div>
+	);
+};
+
+const Divider = ({ customStyles }) => {
+	return <div style={customStyles}></div>;
+};
 
 const SnippetEditor = ({
 	vals = {},
@@ -17,8 +39,10 @@ const SnippetEditor = ({
 	toggleStarStatus,
 	removeAssignedTag,
 	assignTagToSnippet,
+	handleLangSelection,
 	selectedTags = [],
 	availableTags = [],
+	languages = [],
 }) => {
 	const removeTagHandler = (tag) => {
 		// removeAssignedTag(tag);
@@ -41,8 +65,8 @@ const SnippetEditor = ({
 					handleChange={handleChange}
 				/>
 			</div>
-			<div className={styles.SnippetEditor_tags}>
-				<div className={styles.SnippetEditor_tags_title}>TAGS</div>
+			{/* TAGS' SELECTOR */}
+			<EditorSection title="TAGS">
 				<TagSelector
 					selectTagHandler={assignTagToSnippet}
 					tagOptions={availableTags}
@@ -51,29 +75,55 @@ const SnippetEditor = ({
 				<div className={styles.SnippetEditor_tags_list}>
 					<TagsList tags={selectedTags} removeTag={removeTagHandler} />
 				</div>
-			</div>
-			<div className={styles.SnippetEditor_star}>
-				<StarredIndicator
-					isStarred={vals?.isStarred}
+			</EditorSection>
+			{/* LANGUAGES' SELECTOR */}
+			<EditorSection title="SNIPPET LANGUAGE">
+				<LanguageSelector
+					langs={languages}
+					handleParentSelect={handleLangSelection}
+					customStyles={customCSS.langs}
+				/>
+			</EditorSection>
+			<Divider />
+			{/* LANGUAGES' SELECTOR */}
+			<EditorSection title="FAVORITE">
+				<FavoriteToggler
+					isStarred={vals.isStarred}
 					toggleStarStatus={toggleStarStatus}
 				/>
-				<label htmlFor="isStarred" className={styles.SnippetEditor_star_label}>
-					{vals.isStarred ? "Marked as Favorite" : "Mark as Favorite"}
-				</label>
-			</div>
-			<div className={styles.SnippetEditor_main}>
+			</EditorSection>
+			<Divider customStyles={{ marginTop: "-5rem" }} />
+			{/* MARKDOWN EDITOR */}
+			<EditorSection>
 				<FileEditor
 					vals={vals}
 					handleChange={handleChange}
 					handleFileName={handleFileName}
 				/>
-			</div>
+			</EditorSection>
 		</div>
 	);
 };
 
 export default SnippetEditor;
 
-SnippetEditor.defaultProps = {};
+SnippetEditor.defaultProps = {
+	vals: {},
+	selectedTags: [],
+	availableTags: [],
+	languages: [],
+};
 
-SnippetEditor.propTypes = {};
+SnippetEditor.propTypes = {
+	vals: PropTypes.object,
+	handleChange: PropTypes.func,
+	handleReset: PropTypes.func,
+	handleFileName: PropTypes.func,
+	toggleStarStatus: PropTypes.func,
+	removeAssignedTag: PropTypes.func,
+	assignTagToSnippet: PropTypes.func,
+	handleLangSelection: PropTypes.func,
+	selectedTags: PropTypes.arrayOf(PropTypes.object),
+	availableTags: PropTypes.arrayOf(PropTypes.object),
+	languages: PropTypes.arrayOf(PropTypes.object),
+};
