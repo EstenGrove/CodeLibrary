@@ -19,6 +19,7 @@
 		width: 100%;
 		height: auto;
 		padding: 1rem 0.7rem;
+		padding-left: 2rem;
 		background-color: map-get($map: $blueGreyMap, $key: "200");
 		border-radius: 1rem 1rem 0 0;
 		@include flex_row(space-between, flex-start);
@@ -88,6 +89,14 @@
 			border: 4px solid #ccc;
 			background-color: map-get($map: $blueGreyMap, $key: "100");
 
+			& > div,
+			& div {
+				font-size: 1.5rem;
+				font-weight: 500;
+				color: map-get($map: $blueGreyMap, $key: "700");
+				font-family: "Raleway", "Arial", sans-serif;
+				margin-bottom: 0.5rem;
+			}
 			& > * {
 				&::selection {
 					background-color: map-get($map: $pinkMap, $key: "600");

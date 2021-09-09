@@ -1,9 +1,4 @@
-import React, {
-	useRef,
-	useState,
-	useEffect,
-	dangerouslySetInnerHTML,
-} from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "../../css/markdown/MarkdownPreview.module.scss";
 import sprite from "../../assets/icons/modals-complete.svg";
 import { PropTypes } from "prop-types";
@@ -44,7 +39,7 @@ const mockMd1 = `
 # Here's The Title
 `;
 
-const MarkdownPreview = ({ markdown = mockMd, closePreview }) => {
+const MarkdownPreview = ({ markdown, closePreview }) => {
 	const [convertedMarkdown, setConvertedMarkdown] = useState(() => {
 		if (isEmptyVal(markdown)) return `No markdown found.`;
 		return parseMarkdownToHtml(markdown);

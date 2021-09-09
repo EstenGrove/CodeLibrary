@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../css/markdown/MarkdownHeader.module.scss";
 import sprite from "../../assets/icons/editor.svg";
 import { PropTypes } from "prop-types";
 import { format } from "date-fns";
-import {
-	convertAndFormatBytes,
-	formatToPracticalSizeUnit,
-} from "../../helpers/utils_files";
+import { formatToPracticalSizeUnit } from "../../helpers/utils_files";
 // components
 import MarkdownFileNameSelector from "./MarkdownFileNameSelector";
 
@@ -32,6 +29,8 @@ const PreviewButton = ({ openPreview }) => {
 };
 
 const DraftStatus = ({ status }) => {
+	console.log("DraftStatus(status):", status);
+
 	const renderStatus = (status) => {
 		switch (status) {
 			// changed, but not saved
@@ -91,6 +90,20 @@ const MarkdownHeader = ({
 	});
 
 	console.log("vals", vals);
+	console.log("wasEdited", wasEdited);
+
+	useEffect(() => {
+		let isMounted = true;
+		if (!isMounted) {
+			return;
+		}
+
+		setStatus(wasEdited ? "UNSAVED" : "UNCHANGED");
+
+		return () => {
+			isMounted = false;
+		};
+	}, [wasEdited]);
 
 	return (
 		<header className={styles.MarkdownHeader}>
@@ -131,6 +144,16 @@ const MarkdownHeader = ({
 
 export default MarkdownHeader;
 
-MarkdownHeader.defaultProps = {};
+MarkdownHeader.defaultProps = {
+	vals: {},
+	formState: {},
+};
 
-MarkdownHeader.propTypes = {};
+MarkdownHeader.propTypes = {
+	vals: PropTypes.object,
+	formState: PropTypes.object,
+	wasEdited: PropTypes.bool,
+	openPreview: PropTypes.func,
+	handleChange: PropTypes.func,
+	changeFileName: PropTypes.func,
+};

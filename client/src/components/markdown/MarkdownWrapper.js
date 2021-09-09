@@ -74,6 +74,7 @@ const MarkdownWrapper = ({ markdownFile = {} }) => {
 		//    - IF text selected, then apply tool settings
 		//    - IF no text selected, then apply styles as user types
 		setActiveTool(tool);
+		setWasEdited(true);
 	};
 
 	const initHyperLink = () => {
@@ -103,6 +104,7 @@ const MarkdownWrapper = ({ markdownFile = {} }) => {
 
 	const saveChanges = async () => {
 		console.log(`Saving changes...`);
+		setWasEdited(false);
 	};
 	const cancelChanges = async () => {
 		console.log(`Cancel changes...`);
@@ -181,7 +183,10 @@ const MarkdownWrapper = ({ markdownFile = {} }) => {
 			)}
 
 			{showMarkdownPreview && (
-				<MarkdownPreview closePreview={() => setShowMarkdownPreview(false)} />
+				<MarkdownPreview
+					markdown={markdownText}
+					closePreview={() => setShowMarkdownPreview(false)}
+				/>
 			)}
 		</>
 	);
