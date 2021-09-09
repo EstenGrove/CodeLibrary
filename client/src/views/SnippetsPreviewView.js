@@ -1,12 +1,34 @@
 import React, { useState } from "react";
 import styles from "../css/views/SnippetsPreviewView.module.scss";
 import { PropTypes } from "prop-types";
-import Section from "../components/sections/Section";
-import SearchInput from "../components/shared/SearchInput";
 import { useForm } from "../utils/useForm";
+// components
+import SearchInput from "../components/shared/SearchInput";
 import SnippetCardSections from "../components/snippets/SnippetCardSections";
+import Section from "../components/sections/Section";
 
-const SnippetsPreviewView = () => {
+// REQUIREMENTS:
+// - Shows ALL snippet card previews, where clicking will go to the details pageview
+// - Show search, sort and filter options:
+// 		- Search by:
+// 			- Snippet name
+// 			- Date created
+// 			- Code snippet
+// 		- Sort by:
+// 			- Language
+// 			- Tag
+// 			- Date created
+// 		- Filter by:
+// 			- Tag
+// 			- Language
+// 			- Date created
+// 			- A combination of the above options
+// - Snippet details:
+// 		- Show editable code snippet
+// 		- Show data type definitions (eg. args, props, state etc.)
+// 		- Show usage example in readOnly editor
+
+const SnippetsPreviewView = ({ globalState, dispatchToState }) => {
 	const { formState, setFormState, handleChange, handleReset } = useForm({
 		search: "",
 	});

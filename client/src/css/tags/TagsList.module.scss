@@ -8,6 +8,7 @@
 
 	&_list {
 		width: 100%;
-		@include flex_row(space-between, flex-start, wrap);
+		// @include flex_row(space-between, flex-start, wrap);
+		@include flex_row(flex-start, flex-start, wrap);
 	}
 }

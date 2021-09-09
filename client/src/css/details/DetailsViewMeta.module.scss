@@ -1,0 +1,43 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.DetailsViewMeta {
+	width: 100%;
+	height: auto;
+	@include flex_row(flex-start, flex-start);
+
+	&_top {
+		width: 90%;
+		height: auto;
+	}
+
+	&_createdDate {
+		margin-top: 1rem;
+		font-size: 1.5rem;
+		font-weight: 500;
+		font-family: "Open Sans";
+		color: map-get($map: $blueGreyMap, $key: "500");
+	}
+
+	&_iconBar {
+		@include flex_col(flex-start, center);
+		width: auto;
+		height: auto;
+		margin-left: auto;
+
+		&_fave {
+			width: 3rem;
+			height: 3rem;
+		}
+		&_lock {
+			width: 3rem;
+			height: 3rem;
+			fill: map-get($map: $blueGreyMap, $key: "700");
+		}
+	}
+	&_actions {
+		width: 100%;
+		margin-top: 2rem;
+	}
+}

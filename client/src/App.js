@@ -20,6 +20,7 @@ import OpenGraphGeneratorPage from "./pages/OpenGraphGeneratorPage";
 // playground page
 import DemoPage from "./pages/DemoPage";
 import PlaygroundPage from "./pages/PlaygroundPage";
+import SnippetDetailsPage from "./pages/SnippetDetailsPage";
 
 const history = createBrowserHistory();
 
@@ -33,8 +34,14 @@ function App() {
 					<Main>
 						<Switch>
 							<Route exact path="/" component={HomePage} />
-							<Route path="/snippets" component={PreviewsPage} />
+							<Route exact path="/snippets" component={PreviewsPage} />
 							<Route exact path="/tools" component={ToolsPage} />
+							{/* "SNIPPETS" SUB-ROUTES */}
+							<Route
+								path={`/snippets/details`}
+								component={SnippetDetailsPage}
+							/>
+							<Route path={`/snippets/new`} component={SnippetDetailsPage} />
 							{/* "TOOLS" SUB-ROUTES */}
 							<Route path={`/tools/colors`} component={ColorConverterPage} />
 							<Route path={`/tools/shadows`} component={BoxShadowPage} />

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "../css/pages/PreviewsPage.module.scss";
-import { Route, Switch, useLocation, useRouteMatch } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import SnippetsPreviewView from "../views/SnippetsPreviewView";
 import NewSnippetPage from "./NewSnippetPage";
 import SnippetDetailsPage from "./SnippetDetailsPage";
+import { GlobalStateContext } from "../state/GlobalState";
 
 // REQUIREMENTS:
 // - Shows all snippet previews
@@ -12,17 +12,17 @@ import SnippetDetailsPage from "./SnippetDetailsPage";
 // - Enables clicking a snippet for details or to edit it.
 
 const PreviewsPage = () => {
-	const match = useRouteMatch();
+	const { state: globalState, dispatch: dispatchToState } =
+		useContext(GlobalStateContext);
+
+	// FETCH ALL SNIPPETS (OR AT LEAST 20/30 OF THEM)
 
 	return (
 		<div className={styles.PreviewsPage}>
-			<SnippetsPreviewView />
-
-			{/* DEFINE SUB-ROUTES */}
-			<Switch>
-				<Route path={`${match.path}/new`} component={NewSnippetPage} />
-				<Route path={`${match.path}/details`} component={SnippetDetailsPage} />
-			</Switch>
+			<SnippetsPreviewView
+				globalState={globalState}
+				dispatchToState={dispatchToState}
+			/>
 		</div>
 	);
 };

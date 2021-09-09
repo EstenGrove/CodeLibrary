@@ -5,16 +5,20 @@ import img1 from "../assets/images/MusicPlayer-Snippet.png";
 import {
 	purple,
 	blue,
-	red,
-	pink,
 	green,
 	yellow,
 	orange,
-	grey,
 	blueGrey,
-	teal,
 	COLORS_LIST as colorOptions,
 } from "../helpers/utils_styles";
+import { isEmptyObj, isEmptyVal } from "../helpers/utils_types";
+import { languages } from "../helpers/utils_languages";
+import {
+	createBlob,
+	createReaderText,
+	createURL,
+	readAsTextCallback,
+} from "../helpers/utils_files";
 // mock img
 import SnippetCard from "../components/snippets/SnippetCard";
 import CreateSnippet from "../components/snippets/CreateSnippet";
@@ -28,15 +32,7 @@ import ColorPicker from "../components/colors/ColorPicker";
 import ShadowPreview from "../components/shadows/ShadowPreview";
 import MarkdownEditor from "../components/markdown/MarkdownEditor";
 import MarkdownWrapper from "../components/markdown/MarkdownWrapper";
-import { isEmptyObj, isEmptyVal } from "../helpers/utils_types";
-import {
-	createBlob,
-	createReaderText,
-	createURL,
-	readAsTextCallback,
-} from "../helpers/utils_files";
 import LanguageSelector from "../components/languages/LanguageSelector";
-import { languages } from "../helpers/utils_languages";
 
 const mockTypes = [
 	{
