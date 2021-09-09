@@ -93,7 +93,7 @@ const SnippetEditor = ({
 				/>
 			</EditorSection>
 			<Divider customStyles={{ marginTop: "-5rem" }} />
-			{/* MARKDOWN EDITOR */}
+			{/* FILE EDITOR (eg. MARKDOWN) */}
 			<EditorSection>
 				<FileEditor
 					vals={vals}

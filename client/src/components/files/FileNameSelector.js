@@ -16,6 +16,7 @@ const FileNameSelector = ({
 	handleFileExt,
 	handleChange,
 	fileExt = ".md",
+	placeholder = "Enter filename without ext...",
 }) => {
 	// checks if fileExt has been appended, if not...
 	// ...then adds 'fileExt' to file name
@@ -40,7 +41,7 @@ const FileNameSelector = ({
 				onBlur={handleFileName}
 				onChange={handleChange}
 				className={styles.FileNameSelector_input}
-				placeholder="Enter filename without ext..."
+				placeholder={placeholder}
 			/>
 		</div>
 	);

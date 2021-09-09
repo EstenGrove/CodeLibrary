@@ -21,6 +21,7 @@ const FileEditor = ({
 					vals={vals}
 					handleFileExt={handleFileName}
 					handleChange={handleChange}
+					placeholder={`Suggested name: ${vals?.snippetTitle}`}
 				/>
 			</section>
 			<section className={styles.FileEditor_markdown}>

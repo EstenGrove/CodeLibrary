@@ -1,3 +1,48 @@
+/**
+ * List of supported languages for "react-syntax-highlighter"
+ */
+const languageWhiteList = [
+	`javascript`,
+	`bash`,
+	`html`,
+	`css`,
+	`scss`,
+	`markdown`,
+	`sql`,
+	`jsx`,
+	`nginx`,
+	`apache`,
+	`curl`,
+	`python`,
+	`graphql`,
+	`php`,
+	`c++`,
+	`c#`,
+];
+
+// supported language types as plain text
+const languageMap = {
+	javascript: `javascript`,
+	nodejs: "nodejs",
+	deno: "deno",
+	js: `javascript`,
+	jsx: `jsx`,
+	bash: `bash`,
+	html: `html`,
+	css: `css`,
+	scss: `scss`,
+	sql: `sql`,
+	markdown: `markdown`,
+	nginx: `nginx`,
+	apache: `apache`,
+	curl: `curl`,
+	python: `python`,
+	php: `php`,
+	graphql: `graphql`,
+	"c++": "c++",
+	"c#": "c#",
+};
+
 const languages = [
 	{
 		id: 1,
@@ -106,5 +151,7 @@ const langIcons = {
 	markdown: "markdown",
 	sql: "postgresql",
 };
+
+export { languageWhiteList, languageMap };
 
 export { languages, langIcons };

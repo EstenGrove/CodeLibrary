@@ -194,7 +194,11 @@ const LanguageSelector = ({
 						className={styles.LanguageSelector_wrapper_clear}
 						onClick={clearSelection}
 					>
-						<svg className={styles.LanguageSelector_wrapper_clear_icon}>
+						<svg
+							className={styles.LanguageSelector_wrapper_clear_icon}
+							tabIndex={0}
+							onKeyDown={clearSelection}
+						>
 							<use xlinkHref={`${sprite2}#icon-clearclose`}></use>
 						</svg>
 					</div>

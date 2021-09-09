@@ -3,7 +3,12 @@ import styles from "../../css/files/FileEditorToolbar.module.scss";
 import { PropTypes } from "prop-types";
 import FileNameSelector from "./FileNameSelector";
 
-const FileEditorToolbar = ({ vals = {}, handleChange, handleFileExt }) => {
+const FileEditorToolbar = ({
+	vals = {},
+	placeholder,
+	handleChange,
+	handleFileExt,
+}) => {
 	return (
 		<div className={styles.FileEditorToolbar}>
 			<div className={styles.FileEditorToolbar_selectors}>
@@ -13,6 +18,7 @@ const FileEditorToolbar = ({ vals = {}, handleChange, handleFileExt }) => {
 					val={vals.fileName}
 					handleChange={handleChange}
 					handleFileExt={handleFileExt}
+					placeholder={placeholder}
 				/>
 			</div>
 		</div>
