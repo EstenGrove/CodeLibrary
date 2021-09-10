@@ -9,7 +9,6 @@ const TextInput = ({
 	placeholder,
 	required = false,
 	val,
-	initialValue,
 	handleChange,
 	handleBlur,
 	handleFocus,

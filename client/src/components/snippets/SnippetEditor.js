@@ -73,7 +73,7 @@ const SnippetEditor = ({
 				<TagSelector
 					selectTagHandler={assignTagToSnippet}
 					tagOptions={availableTags}
-					enableMultiSelect={false}
+					enableMultiSelect={true}
 				/>
 				<div className={styles.SnippetEditor_tags_list}>
 					<TagsList tags={selectedTags} removeTag={removeTagHandler} />

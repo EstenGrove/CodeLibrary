@@ -89,10 +89,13 @@ const TagSelector = ({
 	const [searchVal, setSearchVal] = useState("");
 
 	const handleSelectTags = (tag) => {
+		// list of selectedTags' ids
+		const tagIDs = selectedTags.map((tag) => tag.id);
+
 		if (enableMultiSelect) {
-			if (selectedTags.includes(tag)) {
+			if (tagIDs.includes(tag.id)) {
 				return setSelectedTags([
-					...selectedTags.filter((x) => x?.tagID !== tag?.tagID),
+					...selectedTags.filter((x) => x.id !== tag.id),
 				]);
 			} else {
 				return setSelectedTags([...selectedTags, tag]);

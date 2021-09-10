@@ -11,8 +11,8 @@ const selected = "hsla(170, 100%, 39%, 1)";
 const notSelected = "hsla(242, 89%, 64%, 1)";
 
 const getIsSelected = (tag, selectedTags = []) => {
-	const selectedIDs = selectedTags.map((tag) => tag?.tagID);
-	const isSelected = selectedIDs.includes(tag?.tagID);
+	const selectedIDs = selectedTags.map((tag) => tag?.id);
+	const isSelected = selectedIDs.includes(tag?.id);
 	return isSelected;
 };
 

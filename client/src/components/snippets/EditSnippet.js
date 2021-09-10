@@ -94,10 +94,8 @@ const EditSnippet = ({
 
 	// assigns a tag to new snippet entry
 	const assignTagToSnippet = (tags) => {
-		if (!Array.isArray) {
-			return setSnippetTags([tags]);
-		}
-		return setSnippetTags(tags);
+		console.log("tags(selection)", tags);
+		setSnippetTags(tags);
 	};
 
 	// assigns the 'fileExt' to filename upon blur Event
