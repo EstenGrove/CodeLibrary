@@ -1,5 +1,7 @@
 // SNIPPET REQUEST UTILS //
 
+import { getLangsIdMap } from "./utils_languages";
+
 // creates snippets' map by snippetID
 const getSnippetsIdMap = (snippets = []) => {
 	return snippets.reduce((snippetsMap, lang) => {
@@ -29,11 +31,12 @@ const getSnippetTypeFromID = (id, types = []) => {
 const getLangNameFromIdMap = (id, map) => {
 	const match = map[id];
 	const name = match?.name;
-	if (name === "javascript") {
-		return `jsx`;
-	} else {
-		return name;
-	}
+	return name;
+};
+const getLangRecordFromMap = (id, langs = []) => {
+	const mapByID = getLangsIdMap(langs);
+	const langRecord = mapByID?.[id];
+	return langRecord;
 };
 
 const matchLanguageFromID = (id, langs = []) => {
@@ -49,4 +52,4 @@ const getLanguageNameFromID = (id, langs = []) => {
 
 export { getSnippetsIdMap };
 export { matchSnippetTypeByID, getSnippetTypeFromID, getLangNameFromIdMap };
-export { matchLanguageFromID, getLanguageNameFromID };
+export { matchLanguageFromID, getLanguageNameFromID, getLangRecordFromMap };

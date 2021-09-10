@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../css/views/SnippetDetailsView.module.scss";
 import { PropTypes } from "prop-types";
 // mock img
@@ -7,12 +7,17 @@ import TagsList from "../components/tags/TagsList";
 import DetailsActionBar from "../components/details/DetailsActionBar";
 import CodeViewer from "../components/code/CodeViewer";
 import CodeUsageExample from "../components/code/CodeUsageExample";
-import {
-	getLangNameFromIdMap,
-	getLanguageNameFromID,
-} from "../helpers/utils_snippets";
+import { getLangRecordFromMap } from "../helpers/utils_snippets";
 import Table from "../components/tables/Table";
 import PropDefinitions from "../components/code/PropDefinitions";
+
+// gets language record from snippet.languageID; returns object record
+const getSnippetLangRecord = (snippet, langs = []) => {
+	const { languageID: id } = snippet;
+	const langRecord = getLangRecordFromMap(id, langs);
+
+	return langRecord ?? {};
+};
 
 const SnippetDetailsView = ({
 	snippet,
@@ -21,31 +26,37 @@ const SnippetDetailsView = ({
 	snippetProps = {},
 	dispatchToState,
 	initEditSnippet,
+	initDeleteSnippet,
+	closeEditSnippetModal,
 }) => {
 	const { languages, tags } = globalState;
+	const [language, setLanguage] = useState(() => {
+		return getSnippetLangRecord(snippet, languages.records);
+	});
 
 	return (
 		<div className={styles.SnippetDetailsView}>
 			<div className={styles.SnippetDetailsView_main}>
+				{/* SNIPPET TITLE, DESC, DATE-CREATED ETC. (LOCKED/STARRED ICONS) */}
 				<DetailsViewMeta
 					snippet={snippet}
 					allTags={tags}
+					snippetLanguage={language}
 					allLanguages={languages}
+					initEditSnippet={initEditSnippet}
+					initDeleteSnippet={initDeleteSnippet}
 				/>
-				<DetailsActionBar initEditSnippet={initEditSnippet} />
+				{/* EDIT & DELETE BUTTONS */}
+				<DetailsActionBar
+					initEditSnippet={initEditSnippet}
+					closeEditSnippetModal={closeEditSnippetModal}
+				/>
+				{/* SNIPPET'S TAGS LIST */}
 				<TagsList tags={snippetTags} />
 				{/* CODE SNIPPET SYNTAX */}
-				<CodeViewer
-					code={snippet.codeSrc}
-					// language={getLangNameFromIdMap(snippet.languageID, languages.mapByID)}
-					language="jsx"
-				/>
+				<CodeViewer code={snippet.codeSrc} language={language.name} />
 				{/* USAGE EXAMPLE */}
-				<CodeUsageExample
-					code={snippet.codeSrc}
-					// language={getLangNameFromIdMap(snippet.languageID, languages.mapByID)}
-					language="jsx"
-				/>
+				<CodeUsageExample code={snippet.codeSrc} language={language.name} />
 				{/* PROP TYPES */}
 				<PropDefinitions
 					title="PropType Definitions: "

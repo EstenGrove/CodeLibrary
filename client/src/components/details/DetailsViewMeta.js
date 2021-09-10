@@ -9,6 +9,7 @@ import { isEmptyVal } from "../../helpers/utils_types";
 import Header from "../app/Header";
 import StarredIndicator from "../snippets/StarredIndicator";
 import LockedIndicator from "../snippets/LockedIndicator";
+import LanguageIcon from "../languages/LanguageIcon";
 
 // REQUIREMENTS:
 // - Contains main snippet info in header:
@@ -85,8 +86,11 @@ const DetailsViewMeta = ({
 	snippet,
 	allTags = [],
 	allLanguages = [],
+	snippetLanguage,
 	toggleLockedStatus,
 	toggleStarStatus,
+	initEditSnippet,
+	initDeleteSnippet,
 }) => {
 	return (
 		<div className={styles.DetailsViewMeta}>
@@ -100,9 +104,13 @@ const DetailsViewMeta = ({
 					{!isEmptyVal(snippet.dateModified) && (
 						<DateModified
 							date={snippet.dateModified}
-							prefixMsg="Modified on "
+							prefixMsg="Last modified: "
 						/>
 					)}
+					<LanguageIcon
+						key={`LangIcon: ${snippetLanguage.name}`}
+						language={snippetLanguage.name}
+					/>
 				</Header>
 				<div className={styles.DetailsViewMeta_top_iconBar}>
 					<StarredIndicator
@@ -117,8 +125,8 @@ const DetailsViewMeta = ({
 				</div>
 			</div>
 			<section className={styles.DetailsViewMeta_actions}>
-				<IconButton icon="edit" />
-				<DeleteButton icon="delete" />
+				<IconButton handleClick={initEditSnippet} icon="edit" />
+				<DeleteButton handleClick={initDeleteSnippet} icon="delete" />
 			</section>
 		</div>
 	);

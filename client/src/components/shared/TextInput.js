@@ -8,7 +8,8 @@ const TextInput = ({
 	id,
 	placeholder,
 	required = false,
-	value,
+	val,
+	initialValue,
 	handleChange,
 	handleBlur,
 	handleFocus,
@@ -30,7 +31,7 @@ const TextInput = ({
 				className={styles.TextInput_input}
 				placeholder={placeholder}
 				required={required}
-				value={value}
+				value={val}
 				onChange={handleChange}
 				onBlur={handleBlur}
 				onFocus={handleFocus}

@@ -8,8 +8,9 @@
 	padding: 1.2rem 1rem;
 	text-align: left;
 	border: 1px solid #ccc;
-	// color: map-get($map: $blueGreyMap, $key: "800");
 	color: map-get($map: $blueGreyMap, $key: "200");
+
+	font-family: "Fira Mono", "Dank Mono", "Menlo", Courier, monospace;
 
 	&:first-child {
 		border-top-left-radius: 1rem;

@@ -23,6 +23,8 @@ const SnippetTitleInput = ({
 		}
 	};
 
+	console.log("val", val);
+
 	return (
 		<div className={styles.SnippetTitleInput}>
 			<div className={styles.SnippetTitleInput_labels}>

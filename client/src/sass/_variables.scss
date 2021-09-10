@@ -34,6 +34,8 @@ $yellow_outline: 0 0 0 2px hsla(39, 100%, 70%, 1);
 // alt outline
 $main_altOutline: 0 0 0 4px rgba(196, 181, 253, 1);
 $blue_outline: 0 0 0 2px rgba(37, 99, 235, 1);
+// blur/darken backend shadow
+$modal_shadow: 2px 9px 500px 400px rgba(0, 0, 0, 0.82);
 
 // box-shadows map
 $shadows: (
@@ -54,6 +56,7 @@ $shadows: (
 	focusMode: $focusMode,
 	purpleRain: $purpleRain,
 	blueOutline: $blue_outline,
+	modalShadow: $modal_shadow,
 );
 
 $hoverShadows: (

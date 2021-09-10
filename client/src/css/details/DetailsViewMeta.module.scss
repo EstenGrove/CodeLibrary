@@ -17,33 +17,6 @@
 		}
 	}
 
-	&_createdDate {
-		margin-top: 1rem;
-		font-size: 1.5rem;
-		font-weight: 500;
-		font-family: "Open Sans";
-		color: map-get($map: $blueGreyMap, $key: "500");
-
-		& > b {
-			font-size: 1.5rem;
-			font-weight: 500;
-			color: map-get($map: $blueMap, $key: "600");
-		}
-	}
-	&_dateModified {
-		margin-top: 1rem;
-		font-size: 1.4rem;
-		font-weight: 400;
-		font-family: "Open Sans";
-		color: map-get($map: $blueGreyMap, $key: "500");
-
-		& > b {
-			font-size: 1.4rem;
-			font-weight: 500;
-			color: map-get($map: $blueGreyMap, $key: "600");
-		}
-	}
-
 	&_actions {
 		width: 100%;
 		margin-top: 2rem;
@@ -53,18 +26,19 @@
 
 .DateCreated {
 	margin-top: 1rem;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	font-weight: 500;
 	font-family: "Open Sans";
+	padding-left: 0.5rem;
 
 	&_label {
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		font-weight: 400;
 		font-family: "Open Sans";
 		color: map-get($map: $blueGreyMap, $key: "500");
 	}
 	&_date {
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		font-weight: 400;
 		font-family: "Open Sans";
 		color: map-get($map: $blueMap, $key: "600");
@@ -72,20 +46,17 @@
 }
 .DateModified {
 	margin-top: 1rem;
-	font-size: 1.5rem;
-	font-weight: 400;
 	font-family: "Open Sans";
 	color: map-get($map: $blueGreyMap, $key: "500");
+	padding-left: 0.5rem;
 
 	&_label {
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		font-weight: 500;
-		font-family: "Open Sans";
-		color: map-get($map: $blueGreyMap, $key: "500");
 	}
 
 	&_date {
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		font-weight: 500;
 		font-family: "Open Sans";
 		color: map-get($map: $blueGreyMap, $key: "600");

@@ -45,36 +45,41 @@ CREATE TABLE users (
 
 // sample/mock table schema data
 const tableSchema = {
-	headings: [`Name`, `Type`, `Desc`, `Usage`],
+	headings: [`Name`, `Type`, `Desc`, `Default`, `Usage`],
 	data: [
 		{
 			name: `handleClick`,
 			type: `function`,
 			desc: `'onClick' handler for button`,
+			default: `N/A`,
 			usage: `(e) => handleClick(e) || handleClick(e)`,
 		},
 		{
 			name: `handleSave`,
 			type: `function`,
 			desc: `'onSubmit' handler for form`,
+			default: `N/A`,
 			usage: `(e) => handleSave(e) || handleSave(e)`,
 		},
 		{
 			name: `listData`,
 			type: `array`,
 			desc: `array of object's data for UI to render`,
+			default: `[] (Defaults to empty array)`,
 			usage: `listData[]`,
 		},
 		{
 			name: `tags`,
 			type: `array`,
 			desc: `array of 'tag' object's fetched from database, stored in state.`,
+			default: `[] (Defaults to empty array)`,
 			usage: `tags[]`,
 		},
 		{
 			name: `user`,
 			type: `object`,
 			desc: `object of current user's properties such as username, password etc.`,
+			default: `{} (Defaults to empty object)`,
 			usage: `user{}`,
 		},
 	],

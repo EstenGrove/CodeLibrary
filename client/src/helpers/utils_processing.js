@@ -43,6 +43,37 @@ function debounce(func, wait, immediate) {
 	};
 }
 
+// converts num to letter (MUST BE WITHIN RANGE: 97-122 A-Za-z)
+const numToLetter = (num) => {
+	const letter = String.fromCharCode(num);
+	return letter;
+};
+// gets a 'random' number within a range
+const numInRange = (min = 97, max = 122) => {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+// count: how many 'random chars' to generate
+// used for ids in <ReassessReport/>
+const generateID = (count = 6) => {
+	const baseCount = range(1, count, (x) => x + 1);
+	const random = baseCount
+		.map((x) => {
+			const inRange = numInRange();
+			return numToLetter(inRange);
+		})
+		.join("");
+	return count + random;
+};
+
+// creates a unique ID, w/ a 'timestamp' of when it was created
+const generateUID = (idLength = 32) => {
+	const x1 = generateID(idLength);
+	return `${x1}=${Date.now()}`;
+};
+
 // removes leading/trailing spaces in string
 const purgeLeadingSpaces = (code) => {
 	if (isEmptyVal(code)) return "";
@@ -65,6 +96,51 @@ const addEllipsis = (str, maxLength = 30) => {
 // capitalizes 1st letter
 const capitalize = (str) => {
 	return str.substring(0, 1).toUpperCase() + str.substring(1);
+};
+
+const capitalizeFirst = (str = "") => {
+	return str.substring(0, 1).toUpperCase() + str.substring(1);
+};
+
+const capitalizeAll = (str = "") => {
+	return str.toUpperCase();
+};
+
+// iterates thru list of characters and capitalizes each
+const capitalizeByCharList = (listToCap = [], str) => {
+	const capped = listToCap.reduce((finalChars, char) => {
+		finalChars = capitalizeByChar(char, str);
+		return finalChars;
+	}, "");
+
+	return capped;
+};
+
+// accepts a target char to capitalize ONLY
+const capitalizeByChar = (targetChar, str) => {
+	const reg = new RegExp(targetChar, "gim");
+	const customCaps = str.replace(reg, (target) => target.toUpperCase());
+	const formatted = capitalizeFirst(customCaps);
+
+	return formatted;
+};
+
+// makes lowercase the 1st character of a string
+const lowerCaseFirst = (str = "") => {
+	return str.substring(0, 1).toLowerCase() + str.substring(1);
+};
+
+// lowercase all chars
+const lowerCaseAll = (str = "") => {
+	return str.toLowerCase();
+};
+
+// accepts a target char to lowercase ONLY
+const lowerCaseByChar = (targetChar, str) => {
+	const charReg = new RegExp(targetChar, "gim");
+	const lowered = str.replace(charReg, (target) => target.toLowerCase());
+
+	return lowered;
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -280,7 +356,29 @@ export { range, groupBy };
 export { debounce };
 
 // string utils
-export { enforceStrMaxLength, addEllipsis, capitalize, purgeLeadingSpaces };
+export {
+	enforceStrMaxLength,
+	addEllipsis,
+	purgeLeadingSpaces,
+	numToLetter,
+	numInRange,
+};
+
+// generators
+export { generateID, generateUID };
+
+// string casing utils
+export {
+	capitalize,
+	capitalizeFirst,
+	capitalizeAll,
+	capitalizeByChar,
+	capitalizeByCharList,
+	// lowercase
+	lowerCaseFirst,
+	lowerCaseByChar,
+	lowerCaseAll,
+};
 
 // box-shadow utils
 

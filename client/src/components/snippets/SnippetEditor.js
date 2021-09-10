@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../css/snippets/SnippetEditor.module.scss";
 import { PropTypes } from "prop-types";
+import { generateID } from "../../helpers/utils_processing";
 // components
 import SnippetTitleInput from "./SnippetTitleInput";
 import SnippetDescInput from "./SnippetDescInput";
@@ -53,10 +54,12 @@ const SnippetEditor = ({
 		<div className={styles.SnippetEditor}>
 			<div className={styles.SnippetEditor_fields}>
 				<SnippetTitleInput
+					key={`Title--${generateID()}`}
 					name="snippetTitle"
 					id="snippetTitle"
 					val={vals?.snippetTitle}
 					handleChange={handleChange}
+					charLimit={150}
 				/>
 				<SnippetDescInput
 					name="snippetDesc"

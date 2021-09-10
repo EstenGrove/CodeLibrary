@@ -7,7 +7,22 @@
 	text-align: left;
 	border: 1px solid #ccc;
 	border-radius: 0.5rem;
-	font-size: 1.3rem;
-	color: map-get($map: $blueGreyMap, $key: "900");
 	border-radius: 0 0 0 0;
+	color: map-get($map: $blueGreyMap, $key: "900");
+	font-size: 1.3rem;
+	font-family: "Fira Mono", "Dank Mono", "Menlo", Courier, monospace;
+
+	&:hover {
+		cursor: pointer;
+		color: map-get($map: $blueMap, $key: "700");
+	}
+
+	&:nth-of-type(2) {
+		color: map-get($map: $blueMap, $key: "700");
+	}
+
+	&:last-child {
+		font-weight: 400;
+		font-family: "Dank Mono", "Courier New", Courier, monospace;
+	}
 }
