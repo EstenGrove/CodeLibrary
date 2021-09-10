@@ -5,10 +5,13 @@
 .CodeUsageExample {
 	width: 100%;
 	height: auto;
+	max-height: 70rem;
+	border-radius: 1rem;
 
 	&_header {
 		width: 100%;
 		height: auto;
+		border-radius: 1rem;
 		padding-left: 0.3rem;
 
 		&_title {
@@ -20,5 +23,22 @@
 	&_example {
 		width: 100%;
 		height: auto;
+		max-height: 50rem;
+		overflow-y: auto;
+		border-radius: 1rem;
+		/* Background Tracking */
+		&::-webkit-scroll-track {
+			background-color: #ffffff;
+		}
+		/* Sets width/height of 'thumb' & hides default */
+		&::-webkit-scrollbar {
+			appearance: none;
+			-webkit-appearance: none;
+			width: 0.7rem;
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: map-get($map: $blueGreyMap, $key: "500");
+			border-radius: 5rem;
+		}
 	}
 }

@@ -26,6 +26,16 @@ const getSnippetTypeFromID = (id, types = []) => {
 
 // match language utils
 
+const getLangNameFromIdMap = (id, map) => {
+	const match = map[id];
+	const name = match?.name;
+	if (name === "javascript") {
+		return `jsx`;
+	} else {
+		return name;
+	}
+};
+
 const matchLanguageFromID = (id, langs = []) => {
 	const lang = langs.filter((lang) => lang.id === id);
 
@@ -38,5 +48,5 @@ const getLanguageNameFromID = (id, langs = []) => {
 };
 
 export { getSnippetsIdMap };
-export { matchSnippetTypeByID, getSnippetTypeFromID };
+export { matchSnippetTypeByID, getSnippetTypeFromID, getLangNameFromIdMap };
 export { matchLanguageFromID, getLanguageNameFromID };

@@ -29,6 +29,42 @@ const tagsBySnippet = [
 	},
 ];
 
+const snippetProps = {
+	headings: [`Name`, `Type`, `Desc`, `Usage`],
+	data: [
+		{
+			name: `handleClick`,
+			type: `function`,
+			desc: `'onClick' handler for button`,
+			usage: `(e) => handleClick(e) || handleClick(e)`,
+		},
+		{
+			name: `handleSave`,
+			type: `function`,
+			desc: `'onSubmit' handler for form`,
+			usage: `(e) => handleSave(e) || handleSave(e)`,
+		},
+		{
+			name: `listData`,
+			type: `array`,
+			desc: `array of object's data for UI to render`,
+			usage: `listData[]`,
+		},
+		{
+			name: `tags`,
+			type: `array`,
+			desc: `array of 'tag' object's fetched from database, stored in state.`,
+			usage: `tags[]`,
+		},
+		{
+			name: `user`,
+			type: `object`,
+			desc: `object of current user's properties such as username, password etc.`,
+			usage: `user{}`,
+		},
+	],
+};
+
 const SnippetDetailsPage = () => {
 	const { state: globalState, dispatch: dispatchToState } =
 		useContext(GlobalStateContext);
@@ -46,6 +82,8 @@ const SnippetDetailsPage = () => {
 				languages={languages}
 				snippet={active}
 				snippetTags={snippetTags}
+				snippetProps={snippetProps}
+				globalState={globalState}
 				dispatchToState={dispatchToState}
 			/>
 		</div>

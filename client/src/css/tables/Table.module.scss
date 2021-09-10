@@ -3,24 +3,26 @@
 @import "../../sass/custom";
 
 .TableWrapper {
-	width: 80rem;
-	max-width: 100%;
+	min-width: 80rem;
+	width: 100%;
 	height: auto;
 	min-height: 10rem;
+	max-width: 100%;
+	@include flex_row(flex-start, center);
 	padding: 2rem 1rem;
 	padding-bottom: 2rem;
 	border-bottom-left-radius: 10px;
 	font-family: $primary_font;
-	background-color: #ffffff;
+	background-color: transparent;
 	border-radius: 1rem;
 
 	&_table {
 		border-collapse: separate;
-		// border-radius: 0.5rem;
-		// border-bottom-left-radius: 10px;
-		// border-collapse: collapse;
 		border-spacing: 0;
 		width: 100%;
+		border-radius: 1rem;
+		border-top-left-radius: 1rem;
+		border-top-right-radius: 1rem;
 
 		&_body tr:nth-child(odd) {
 			background: #eaecef;
