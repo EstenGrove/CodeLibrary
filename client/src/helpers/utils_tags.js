@@ -57,7 +57,18 @@ const tags = [
 	},
 ];
 
-// MATCH UTILS
+// PROCESSING & MATCH UTILS
+
+// creates object map by tagID
+const getTagsIdMap = (tags = []) => {
+	return tags.reduce((tagsMap, tag) => {
+		if (!tagsMap[tag.id]) {
+			tagsMap[tag.id] = tag;
+			return tagsMap;
+		}
+		return tagsMap;
+	}, {});
+};
 
 const getTagsBySnippet = (tagsBySnippet = [], allTags = []) => {
 	// extract tagIDs from tagsBySnippet records
@@ -75,3 +86,4 @@ const getTagsBySnippet = (tagsBySnippet = [], allTags = []) => {
 
 export { tags };
 export { getTagsBySnippet };
+export { getTagsIdMap };

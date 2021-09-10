@@ -1,0 +1,13 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.TableCell {
+	padding: 1.2rem 1rem;
+	text-align: left;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	font-size: 1.3rem;
+	color: map-get($map: $blueGreyMap, $key: "900");
+	border-radius: 0 0 0 0;
+}

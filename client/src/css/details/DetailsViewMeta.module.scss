@@ -5,11 +5,16 @@
 .DetailsViewMeta {
 	width: 100%;
 	height: auto;
-	@include flex_row(flex-start, flex-start);
 
 	&_top {
-		width: 90%;
+		width: 100%;
 		height: auto;
+		@include flex_row(space-between, flex-start);
+
+		&_iconBar {
+			margin-left: auto;
+			@include flex_col(flex-end, center);
+		}
 	}
 
 	&_createdDate {
@@ -18,26 +23,111 @@
 		font-weight: 500;
 		font-family: "Open Sans";
 		color: map-get($map: $blueGreyMap, $key: "500");
-	}
 
-	&_iconBar {
-		@include flex_col(flex-start, center);
-		width: auto;
-		height: auto;
-		margin-left: auto;
-
-		&_fave {
-			width: 3rem;
-			height: 3rem;
-		}
-		&_lock {
-			width: 3rem;
-			height: 3rem;
-			fill: map-get($map: $blueGreyMap, $key: "700");
+		& > b {
+			font-size: 1.5rem;
+			font-weight: 500;
+			color: map-get($map: $blueMap, $key: "600");
 		}
 	}
+	&_dateModified {
+		margin-top: 1rem;
+		font-size: 1.4rem;
+		font-weight: 400;
+		font-family: "Open Sans";
+		color: map-get($map: $blueGreyMap, $key: "500");
+
+		& > b {
+			font-size: 1.4rem;
+			font-weight: 500;
+			color: map-get($map: $blueGreyMap, $key: "600");
+		}
+	}
+
 	&_actions {
 		width: 100%;
 		margin-top: 2rem;
+		@include flex_row(flex-end, center);
+	}
+}
+
+.DateCreated {
+	margin-top: 1rem;
+	font-size: 1.5rem;
+	font-weight: 500;
+	font-family: "Open Sans";
+
+	&_label {
+		font-size: 1.5rem;
+		font-weight: 400;
+		font-family: "Open Sans";
+		color: map-get($map: $blueGreyMap, $key: "500");
+	}
+	&_date {
+		font-size: 1.5rem;
+		font-weight: 400;
+		font-family: "Open Sans";
+		color: map-get($map: $blueMap, $key: "600");
+	}
+}
+.DateModified {
+	margin-top: 1rem;
+	font-size: 1.5rem;
+	font-weight: 400;
+	font-family: "Open Sans";
+	color: map-get($map: $blueGreyMap, $key: "500");
+
+	&_label {
+		font-size: 1.5rem;
+		font-weight: 500;
+		font-family: "Open Sans";
+		color: map-get($map: $blueGreyMap, $key: "500");
+	}
+
+	&_date {
+		font-size: 1.5rem;
+		font-weight: 500;
+		font-family: "Open Sans";
+		color: map-get($map: $blueGreyMap, $key: "600");
+	}
+}
+
+.IconButton {
+	width: 3.5rem;
+	height: 3.5rem;
+	@include flex_row(center, center);
+	padding: 0.5rem;
+	border-radius: 50%;
+	background-color: map-get($map: $blueMap, $key: "600");
+	margin: 0 0.5rem;
+	&:hover {
+		cursor: pointer;
+		box-shadow: map-get($map: $shadows, $key: "subtle");
+	}
+
+	&_icon {
+		width: 2.7rem;
+		height: 2.7rem;
+		fill: #ffffff;
+	}
+}
+
+.DeleteButton {
+	width: 3.5rem;
+	height: 3.5rem;
+	@include flex_row(center, center);
+	padding: 0.5rem;
+	border-radius: 50%;
+	background-color: map-get($map: $redMap, $key: "600");
+	margin: 0 0.5rem;
+	&:hover {
+		cursor: pointer;
+		box-shadow: map-get($map: $shadows, $key: "subtle");
+	}
+
+	&_icon {
+		width: 2.7rem;
+		height: 2.7rem;
+		fill: #ffffff;
 	}
 }

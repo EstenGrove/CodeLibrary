@@ -6,6 +6,7 @@ import Header from "../components/app/Header";
 import CodeViewer from "../components/code/CodeViewer";
 import { purgeLeadingSpaces } from "../helpers/utils_processing";
 import CodeUsageExample from "../components/code/CodeUsageExample";
+import Table from "../components/tables/Table";
 
 const code = `
 // file size
@@ -42,6 +43,43 @@ CREATE TABLE users (
 );
 `;
 
+// sample/mock table schema data
+const tableSchema = {
+	headings: [`Name`, `Type`, `Desc`, `Usage`],
+	data: [
+		{
+			name: `handleClick`,
+			type: `function`,
+			desc: `'onClick' handler for button`,
+			usage: `(e) => handleClick(e) || handleClick(e)`,
+		},
+		{
+			name: `handleSave`,
+			type: `function`,
+			desc: `'onSubmit' handler for form`,
+			usage: `(e) => handleSave(e) || handleSave(e)`,
+		},
+		{
+			name: `listData`,
+			type: `array`,
+			desc: `array of object's data for UI to render`,
+			usage: `listData[]`,
+		},
+		{
+			name: `tags`,
+			type: `array`,
+			desc: `array of 'tag' object's fetched from database, stored in state.`,
+			usage: `tags[]`,
+		},
+		{
+			name: `user`,
+			type: `object`,
+			desc: `object of current user's properties such as username, password etc.`,
+			usage: `user{}`,
+		},
+	],
+};
+
 const PlaygroundPage = () => {
 	return (
 		<div className={styles.PlaygroundPage}>
@@ -49,6 +87,10 @@ const PlaygroundPage = () => {
 				title="Playground"
 				subtitle="Playground page for demos and examples."
 			/>
+
+			<div className={styles.PlaygroundPage_main}>
+				<Table schema={tableSchema} />
+			</div>
 
 			<div className={styles.PlaygroundPage_main}>
 				<CodeUsageExample />

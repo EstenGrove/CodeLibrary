@@ -3,7 +3,16 @@ import styles from "../../css/code/CodeViewer.module.scss";
 import sprite from "../../assets/icons/editor.svg";
 import { PropTypes } from "prop-types";
 // syntax highlighter dependencies
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+	dracula, // FAVORITE, BUT HANDLES COMPONENTS WEIRDLY
+	atomDark,
+	tomorrow,
+	// prism,
+	synthwave84,
+	xonokai,
+	coldarkDark,
+	vscDarkPlus, // MOST EFFECTIVE HIGHLIGHTING
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { purgeLeadingSpaces } from "../../helpers/utils_processing";
 
@@ -66,7 +75,7 @@ const CodeViewer = ({ code = `// No code found :(`, language }) => {
 				<SyntaxHighlighter
 					language={language}
 					style={dracula}
-					customStyle={{ fontSize: "13px" }}
+					customStyle={{ fontSize: "13px", borderRadius: "1rem" }}
 					showLineNumbers={true}
 				>
 					{purgeLeadingSpaces(code)}

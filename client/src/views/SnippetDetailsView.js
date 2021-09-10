@@ -1,18 +1,20 @@
 import React from "react";
 import styles from "../css/views/SnippetDetailsView.module.scss";
 import { PropTypes } from "prop-types";
-import Header from "../components/app/Header";
 // mock img
-import img1 from "../assets/images/MusicPlayer-Snippet.png";
 import DetailsViewMeta from "../components/details/DetailsViewMeta";
 import TagsList from "../components/tags/TagsList";
+import DetailsActionBar from "../components/details/DetailsActionBar";
+import CodeViewer from "../components/code/CodeViewer";
 
 const SnippetDetailsView = ({
 	snippet,
 	snippetTags = [],
 	tags = [],
+	globalState = {},
 	languages = [],
 	dispatchToState,
+	initEditSnippet,
 }) => {
 	return (
 		<div className={styles.SnippetDetailsView}>
@@ -22,7 +24,10 @@ const SnippetDetailsView = ({
 					allTags={tags}
 					allLanguages={languages}
 				/>
+				<DetailsActionBar initEditSnippet={initEditSnippet} />
 				<TagsList tags={snippetTags} />
+				{/* CODE SNIPPET SYNTAX */}
+				<CodeViewer code={snippet.codeSrc} language="javascript" />
 			</div>
 		</div>
 	);

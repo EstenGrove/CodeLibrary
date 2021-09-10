@@ -2,11 +2,13 @@ import React from "react";
 import styles from "../../css/details/DetailsViewMeta.module.scss";
 import sprite from "../../assets/icons/editor.svg";
 import { PropTypes } from "prop-types";
-import StarredIndicator from "../snippets/StarredIndicator";
-import LockedIndicator from "../snippets/LockedIndicator";
-import Header from "../app/Header";
 import { blueGrey } from "../../helpers/utils_styles";
 import { format } from "date-fns";
+import { isEmptyVal } from "../../helpers/utils_types";
+// components
+import Header from "../app/Header";
+import StarredIndicator from "../snippets/StarredIndicator";
+import LockedIndicator from "../snippets/LockedIndicator";
 
 // REQUIREMENTS:
 // - Contains main snippet info in header:
@@ -28,6 +30,57 @@ const customCSS = {
 	},
 };
 
+const icons = {
+	edit: "create",
+	delete: "delete",
+	menu: "dots-three-vertical",
+};
+
+const IconButton = ({ icon, handleClick }) => {
+	return (
+		<div className={styles.IconButton} onClick={handleClick}>
+			<svg className={styles.IconButton_icon}>
+				<use xlinkHref={`${sprite}#icon-${icons[icon]}`}></use>
+			</svg>
+		</div>
+	);
+};
+
+const DeleteButton = ({ icon = "delete", handleClick }) => {
+	return (
+		<div className={styles.DeleteButton} onClick={handleClick}>
+			<svg className={styles.DeleteButton_icon}>
+				<use xlinkHref={`${sprite}#icon-${icons[icon]}`}></use>
+			</svg>
+		</div>
+	);
+};
+
+const DateCreated = ({
+	prefixMsg = "Created on ",
+	date,
+	dateFormat = "MMM Do, YYYY",
+}) => {
+	return (
+		<div className={styles.DateCreated}>
+			<span className={styles.DateCreated_label}>{prefixMsg}</span>
+			<span className={styles.DateCreated_date}>
+				{format(date, dateFormat)} at {format(date, "h:mm A")}
+			</span>
+		</div>
+	);
+};
+const DateModified = ({ prefixMsg, date, dateFormat = "MMM Do, YYYY" }) => {
+	return (
+		<div className={styles.DateModified}>
+			<span className={styles.DateModified_label}>{prefixMsg}</span>
+			<span className={styles.DateModified_date}>
+				{format(date, dateFormat)} at {format(date, "h:mm A")}
+			</span>
+		</div>
+	);
+};
+
 const DetailsViewMeta = ({
 	snippet,
 	allTags = [],
@@ -43,25 +96,29 @@ const DetailsViewMeta = ({
 					title={`${snippet?.name ?? ""}`}
 					subtitle={snippet?.desc}
 				>
-					<div className={styles.DetailsViewMeta_createdDate}>
-						Created on {format(snippet.dateCreated, "M/D/YYYY h:mm A")}
-					</div>
+					<DateCreated date={snippet.dateCreated} prefixMsg="Created on " />
+					{!isEmptyVal(snippet.dateModified) && (
+						<DateModified
+							date={snippet.dateModified}
+							prefixMsg="Modified on "
+						/>
+					)}
 				</Header>
+				<div className={styles.DetailsViewMeta_top_iconBar}>
+					<StarredIndicator
+						isStarred={snippet.isStarred}
+						toggleLockedStatus={toggleStarStatus}
+					/>
+					<br />
+					<LockedIndicator
+						isLocked={snippet.isLocked}
+						toggleLockedStatus={toggleLockedStatus}
+					/>
+				</div>
 			</div>
-			<section className={styles.DetailsViewMeta_iconBar}>
-				<StarredIndicator
-					isStarred={snippet.isStarred}
-					toggleLockedStatus={toggleStarStatus}
-				/>
-				<br />
-				<LockedIndicator
-					isLocked={snippet.isLocked}
-					toggleLockedStatus={toggleLockedStatus}
-				/>
-			</section>
 			<section className={styles.DetailsViewMeta_actions}>
-				{/* ACTION ICONS */}
-				{/* ACTION ICONS */}
+				<IconButton icon="edit" />
+				<DeleteButton icon="delete" />
 			</section>
 		</div>
 	);

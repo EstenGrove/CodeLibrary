@@ -13,19 +13,84 @@ const mockSnippet = {
 	previewImg: img1,
 	typeID: 1,
 	languageID: 1,
-	codeSrc: "",
-	dateCreated: new Date(2021, 2, 24),
-	dateModified: new Date(2021, 2, 24),
+	dateCreated: new Date(2021, 2, 24, 14, 23),
+	dateModified: new Date(2021, 3, 16, 16, 43),
 	metaID: 477,
 	isLocked: true,
 	isStarred: true,
 	isActive: true,
+	codeSrc: `
+import React from "react";
+import styles from "../../css/shared/TextInput.module.scss";
+import { PropTypes } from "prop-types";
+
+const TextInput = ({
+	label,
+	name,
+	id,
+	placeholder,
+	required = false,
+	value,
+	handleChange,
+	handleBlur,
+	handleFocus,
+	handleReset,
+	addRequiredFlag = false,
+}) => {
+	return (
+		<div className={styles.TextInput}>
+			<label htmlFor={id} className={styles.TextInput_label}>
+				{label}
+				{addRequiredFlag && (
+					<div className={styles.TextInput_requiredFlag}>*</div>
+				)}
+			</label>
+			<input
+				type="text"
+				name={name}
+				id={id}
+				className={styles.TextInput_input}
+				placeholder={placeholder}
+				required={required}
+				value={value}
+				onChange={handleChange}
+				onBlur={handleBlur}
+				onFocus={handleFocus}
+				onReset={handleReset}
+			/>
+		</div>
+	);
+};
+
+export default TextInput;
+
+// #PropTypes
+TextInput.defaultProps = {
+	required: false,
+	addRequiredFlag: false,
+};
+
+TextInput.propTypes = {
+	label: PropTypes.string,
+	name: PropTypes.string.isRequired,
+	id: PropTypes.string,
+	placeholder: PropTypes.string,
+	required: PropTypes.bool,
+	value: PropTypes.string.isRequired,
+	handleChange: PropTypes.func.isRequired,
+	handleFocus: PropTypes.func,
+	handleBlur: PropTypes.func,
+	handleReset: PropTypes.func,
+	addRequiredFlag: PropTypes.bool,
+};
+
+	`,
 };
 
 const initialState = {
 	snippets: {
 		active: { ...mockSnippet }, // current selected
-		records: [], // all records
+		records: [mockSnippet], // all records
 		mapByID: {}, // records mapped by id
 	},
 	tags: {
@@ -44,8 +109,24 @@ const GlobalStateContext = createContext();
 
 const stateReducer = (state, action) => {
 	switch (action.type) {
-		case "INITIAL_RESOUCE": {
-			return { ...state };
+		case "INITIAL_RESOURCE": {
+			const { tagsMap, langsMap, snippetsMap } = action.data;
+
+			return {
+				...state,
+				snippets: {
+					...state.snippets,
+					mapByID: { ...snippetsMap },
+				},
+				tags: {
+					...state.tags,
+					mapByID: { ...tagsMap },
+				},
+				languages: {
+					...state.languages,
+					mapByID: { ...langsMap },
+				},
+			};
 		}
 		case "SELECT_SNIPPET": {
 			const { snippetID } = action.data;

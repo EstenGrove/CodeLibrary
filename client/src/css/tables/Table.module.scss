@@ -1,0 +1,39 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.TableWrapper {
+	width: 80rem;
+	max-width: 100%;
+	height: auto;
+	min-height: 10rem;
+	padding: 2rem 1rem;
+	padding-bottom: 2rem;
+	border-bottom-left-radius: 10px;
+	font-family: $primary_font;
+	background-color: #ffffff;
+	border-radius: 1rem;
+
+	&_table {
+		border-collapse: separate;
+		// border-radius: 0.5rem;
+		// border-bottom-left-radius: 10px;
+		// border-collapse: collapse;
+		border-spacing: 0;
+		width: 100%;
+
+		&_body tr:nth-child(odd) {
+			background: #eaecef;
+			border-radius: 1rem;
+		}
+
+		& tr:last-child td:first-child {
+			border-bottom-left-radius: 1rem;
+			// border-radius: 1rem;
+		}
+		& tr:last-child td:last-child {
+			border-bottom-right-radius: 1rem;
+			// border-radius: 1rem;
+		}
+	}
+}

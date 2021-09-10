@@ -2,9 +2,9 @@ import React, { useState, useContext } from "react";
 import styles from "../css/pages/SnippetDetailsPage.module.scss";
 import { PropTypes } from "prop-types";
 import { GlobalStateContext } from "../state/GlobalState";
+import { getTagsBySnippet } from "../helpers/utils_tags";
 // components
 import SnippetDetailsView from "../views/SnippetDetailsView";
-import { getTagsBySnippet } from "../helpers/utils_tags";
 
 // REQUIREMENTS:
 // - Shows ALL relevant snippet details
@@ -38,9 +38,6 @@ const SnippetDetailsPage = () => {
 	const [snippetTags, setSnippetTags] = useState(() => {
 		return getTagsBySnippet(tagsBySnippet, tags.records);
 	});
-
-	console.log("tags", tags.records);
-	console.log("snippetTags", snippetTags);
 
 	return (
 		<div className={styles.SnippetDetailsPage}>

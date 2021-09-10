@@ -1,5 +1,16 @@
 // SNIPPET REQUEST UTILS //
 
+// creates snippets' map by snippetID
+const getSnippetsIdMap = (snippets = []) => {
+	return snippets.reduce((snippetsMap, lang) => {
+		if (!snippetsMap[lang.id]) {
+			snippetsMap[lang.id] = lang;
+			return snippetsMap;
+		}
+		return snippetsMap;
+	}, {});
+};
+
 // match snippet type utils
 
 const matchSnippetTypeByID = (id, types = []) => {
@@ -26,5 +37,6 @@ const getLanguageNameFromID = (id, langs = []) => {
 	return lang?.[0]?.name;
 };
 
+export { getSnippetsIdMap };
 export { matchSnippetTypeByID, getSnippetTypeFromID };
 export { matchLanguageFromID, getLanguageNameFromID };

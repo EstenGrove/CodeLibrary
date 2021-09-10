@@ -152,6 +152,20 @@ const langIcons = {
 	sql: "postgresql",
 };
 
+// LANG UTILS
+
+const getLangsIdMap = (langs = []) => {
+	return langs.reduce((langMap, lang) => {
+		if (!langMap[lang.id]) {
+			langMap[lang.id] = lang;
+			return langMap;
+		}
+		return langMap;
+	}, {});
+};
+
 export { languageWhiteList, languageMap };
 
 export { languages, langIcons };
+
+export { getLangsIdMap };
