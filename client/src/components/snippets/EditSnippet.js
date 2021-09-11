@@ -11,6 +11,7 @@ import LockedIndicator from "../snippets/LockedIndicator";
 import TagSelector from "../tags/TagSelector";
 import { useOutsideClick } from "../../utils/useOutsideClick";
 import { useKeyboardShortcut } from "../../utils/useKeyboardShortcut";
+import { useLockBodyScroll } from "../../utils/useLockBodyScroll";
 
 const customCSS = {
 	discard: {
@@ -77,6 +78,7 @@ const EditSnippet = ({
 	const modalRef = useRef();
 	const { isOutside } = useOutsideClick(modalRef);
 	const wasEscaped = useKeyboardShortcut(["escape"]);
+	useLockBodyScroll();
 	// edit snippet form
 	const { formState, setFormState, handleChange, handleReset } = useForm({
 		snippetTitle: activeSnippet?.name ?? "",
@@ -94,7 +96,6 @@ const EditSnippet = ({
 
 	// assigns a tag to new snippet entry
 	const assignTagToSnippet = (tags) => {
-		console.log("tags(selection)", tags);
 		setSnippetTags(tags);
 	};
 

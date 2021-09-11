@@ -8,6 +8,7 @@
 	min-height: 40rem;
 	border-radius: 1rem;
 	background-color: #ffffff;
+	// overflow-y: auto;
 
 	&_fields {
 		@include fill_container;

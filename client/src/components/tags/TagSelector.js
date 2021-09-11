@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../../css/tags/TagSelector.module.scss";
 // import sprite from "../../assets/icons/carets-arrows.svg";
 import sprite from "../../assets/icons/modals-complete.svg";
-import { PropTypes } from "prop-types";
+import { func, PropTypes } from "prop-types";
 import { isEmptyArray, isEmptyVal } from "../../helpers/utils_types";
 import TagSelectorDropdown from "./TagSelectorDropdown";
 

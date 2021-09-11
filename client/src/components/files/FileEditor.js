@@ -5,14 +5,7 @@ import { PropTypes } from "prop-types";
 import FileEditorToolbar from "./FileEditorToolbar";
 import MarkdownEditor from "../markdown/MarkdownEditor";
 
-const FileEditor = ({
-	vals,
-	handleChange,
-	handleFileName,
-	saveSnippet,
-	discardSnippet,
-	lockSnippet,
-}) => {
+const FileEditor = ({ vals, handleChange, handleFileName }) => {
 	return (
 		<div className={styles.FileEditor}>
 			<div className={styles.FileEditor_label}>FILES</div>

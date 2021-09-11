@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../css/snippets/SnippetEditor.module.scss";
 import { PropTypes } from "prop-types";
 import { generateID } from "../../helpers/utils_processing";
@@ -45,11 +45,6 @@ const SnippetEditor = ({
 	availableTags = [],
 	languages = [],
 }) => {
-	const removeTagHandler = (tag) => {
-		// removeAssignedTag(tag);
-		assignTagToSnippet(tag);
-	};
-
 	return (
 		<div className={styles.SnippetEditor}>
 			<div className={styles.SnippetEditor_fields}>
@@ -76,7 +71,7 @@ const SnippetEditor = ({
 					enableMultiSelect={true}
 				/>
 				<div className={styles.SnippetEditor_tags_list}>
-					<TagsList tags={selectedTags} removeTag={removeTagHandler} />
+					<TagsList disableRemoveFn={true} tags={selectedTags} />
 				</div>
 			</EditorSection>
 			{/* LANGUAGES' SELECTOR */}

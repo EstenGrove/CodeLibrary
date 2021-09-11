@@ -4,7 +4,7 @@ import { PropTypes } from "prop-types";
 import { isEmptyArray } from "../../helpers/utils_types";
 import Tag from "./Tag";
 
-const TagsList = ({ tags = [], removeTag }) => {
+const TagsList = ({ tags = [], removeTag, disableRemoveFn = true }) => {
 	return (
 		<div className={styles.TagsList}>
 			<div className={styles.TagsList_list}>
@@ -13,7 +13,7 @@ const TagsList = ({ tags = [], removeTag }) => {
 						<Tag
 							tag={tag}
 							key={`Tag--${tag?.name}--${idx}`}
-							disableRemove={true}
+							disableRemove={disableRemoveFn}
 							removeTag={() => removeTag(tag)}
 						/>
 					))}
