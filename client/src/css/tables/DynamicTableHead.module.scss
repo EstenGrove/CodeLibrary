@@ -1,0 +1,19 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.DynamicTableHead {
+	font-size: 1.6rem;
+	font-weight: 700;
+	padding: 1.2rem 1rem;
+	text-align: left;
+	border: 1px solid #ccc;
+	color: map-get($map: $blueGreyMap, $key: "200");
+
+	font-family: "Fira Mono", "Dank Mono", "Menlo", Courier, monospace;
+	// alt border
+	border-top-left-radius: 1rem;
+	border-top-right-radius: 1rem;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}

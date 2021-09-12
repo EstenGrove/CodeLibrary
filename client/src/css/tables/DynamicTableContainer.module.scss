@@ -1,0 +1,11 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.DynamicTableContainer {
+	width: 100%;
+	height: auto;
+	min-height: 30rem;
+	background-color: #ffffff;
+	border-radius: 1rem;
+}

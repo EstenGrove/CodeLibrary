@@ -1,0 +1,31 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.DynamicTableRow {
+	width: 100%;
+	height: 100%;
+	border-radius: 0;
+
+	&:nth-child(odd) {
+		background: #eaecef;
+		border-radius: 1rem;
+	}
+
+	// <tr>
+	&:last-child td:first-child {
+		border-bottom-left-radius: 1rem;
+		// border-radius: 1rem;
+	}
+	// <tr>
+	&:last-child td:last-child {
+		border-bottom-right-radius: 1rem;
+		// border-radius: 1rem;
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: map-get($map: $blueMap, $key: "300");
+		color: map-get($map: $blueMap, $key: "700");
+	}
+}

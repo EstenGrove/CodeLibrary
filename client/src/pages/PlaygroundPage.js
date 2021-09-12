@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../css/pages/PlaygroundPage.module.scss";
 import { PropTypes } from "prop-types";
-import Header from "../components/app/Header";
+import { generateID, purgeLeadingSpaces } from "../helpers/utils_processing";
 // custom wrapper around syntax highlighter
+import Header from "../components/app/Header";
 import CodeViewer from "../components/code/CodeViewer";
-import { purgeLeadingSpaces } from "../helpers/utils_processing";
 import CodeUsageExample from "../components/code/CodeUsageExample";
 import Table from "../components/tables/Table";
+import OneTimeExpiry from "../components/app/OneTimeExpiry";
+import { addMinutes, addSeconds } from "date-fns";
+import DynamicTableContainer from "../components/tables/DynamicTableContainer";
+import DynamicTable from "../components/tables/DynamicTable";
+import DynamicTableHead from "../components/tables/DynamicTableHead";
+import DynamicTableRow from "../components/tables/DynamicTableRow";
+import DynamicTableCell from "../components/tables/DynamicTableCell";
+import DynamicTableBody from "../components/tables/DynamicTableBody";
+import DynamicTableHeading from "../components/tables/DynamicTableHeading";
 
 const code = `
 // file size
@@ -66,14 +75,14 @@ const tableSchema = {
 			type: `array`,
 			desc: `array of object's data for UI to render`,
 			default: `[] (Defaults to empty array)`,
-			usage: `listData[]`,
+			usage: `object[]`,
 		},
 		{
 			name: `tags`,
 			type: `array`,
 			desc: `array of 'tag' object's fetched from database, stored in state.`,
 			default: `[] (Defaults to empty array)`,
-			usage: `tags[]`,
+			usage: `object[]`,
 		},
 		{
 			name: `user`,
@@ -86,6 +95,13 @@ const tableSchema = {
 };
 
 const PlaygroundPage = () => {
+	const [showTimer, setShowTimer] = useState(false);
+
+	const handleExpiryCounter = () => {
+		setShowTimer(true);
+		console.log(`Was Clicked`);
+	};
+
 	return (
 		<div className={styles.PlaygroundPage}>
 			<Header
@@ -94,7 +110,38 @@ const PlaygroundPage = () => {
 			/>
 
 			<div className={styles.PlaygroundPage_main}>
-				<Table schema={tableSchema} />
+				<button onClick={handleExpiryCounter}>Show Timer</button>
+			</div>
+			<div className={styles.PlaygroundPage_main}>
+				<DynamicTableContainer>
+					<DynamicTable>
+						<DynamicTableHead>
+							<DynamicTableRow>
+								{tableSchema.headings &&
+									tableSchema.headings.map((col, idx) => (
+										<DynamicTableHeading key={`Column-${col}--${idx}`}>
+											{col}
+										</DynamicTableHeading>
+									))}
+							</DynamicTableRow>
+						</DynamicTableHead>
+						<DynamicTableBody>
+							{tableSchema.data &&
+								tableSchema.data.map((cellData, idx) => (
+									<DynamicTableRow key={`Row-${cellData.name}--${idx}`}>
+										<DynamicTableCell>{cellData.name}</DynamicTableCell>
+										<DynamicTableCell>{cellData.type}</DynamicTableCell>
+										<DynamicTableCell>{cellData.desc}</DynamicTableCell>
+										<DynamicTableCell>{cellData.default}</DynamicTableCell>
+										<DynamicTableCell>{cellData.usage}</DynamicTableCell>
+									</DynamicTableRow>
+								))}
+						</DynamicTableBody>
+					</DynamicTable>
+				</DynamicTableContainer>
+			</div>
+			<div className={styles.PlaygroundPage_main}>
+				{/* <Table schema={tableSchema} /> */}
 			</div>
 
 			<div className={styles.PlaygroundPage_main}>
@@ -108,6 +155,15 @@ const PlaygroundPage = () => {
 				<CodeViewer code={purgeLeadingSpaces(code4)} language="markdown" />
 				<CodeViewer code={purgeLeadingSpaces(code5)} language="sql" />
 			</div>
+
+			{/* <OneTimeExpiry
+				key={`ResetExpiry:${generateID()}`}
+				startDate={new Date()}
+				expiryDate={addMinutes(new Date(), 30)}
+				startExpiryCounter={showTimer}
+			>
+				<h1>Hello</h1>
+			</OneTimeExpiry> */}
 		</div>
 	);
 };

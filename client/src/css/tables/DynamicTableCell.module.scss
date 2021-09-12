@@ -1,0 +1,25 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.DynamicTableCell {
+	padding: 1.2rem 1rem;
+	text-align: left;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	border-radius: 0 0 0 0;
+	color: map-get($map: $blueGreyMap, $key: "900");
+	font-size: 1.3rem;
+	font-weight: 400;
+	font-family: "Dank Mono", "Courier New", Courier, monospace;
+
+	&:hover {
+		cursor: pointer;
+		color: map-get($map: $blueMap, $key: "700");
+	}
+
+	// selects every 2nd of type
+	&:nth-of-type(2) {
+		color: map-get($map: $blueMap, $key: "700");
+	}
+}
