@@ -14,4 +14,7 @@ export default DynamicTableRow;
 
 DynamicTableRow.defaultProps = {};
 
-DynamicTableRow.propTypes = {};
+DynamicTableRow.propTypes = {
+	children: PropTypes.any,
+	rest: PropTypes.any,
+};

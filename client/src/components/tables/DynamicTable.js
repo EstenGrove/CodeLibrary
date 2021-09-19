@@ -16,4 +16,5 @@ DynamicTable.defaultProps = {};
 
 DynamicTable.propTypes = {
 	children: PropTypes.any,
+	rest: PropTypes.any,
 };

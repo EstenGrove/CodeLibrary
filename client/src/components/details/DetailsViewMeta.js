@@ -110,6 +110,7 @@ const DetailsViewMeta = ({
 					<LanguageIcon
 						key={`LangIcon: ${snippetLanguage.name}`}
 						language={snippetLanguage.name}
+						showLangName={true}
 					/>
 				</Header>
 				<div className={styles.DetailsViewMeta_top_iconBar}>

@@ -11,7 +11,7 @@
 	color: map-get($map: $blueGreyMap, $key: "900");
 	font-size: 1.3rem;
 	font-weight: 400;
-	font-family: "Dank Mono", "Courier New", Courier, monospace;
+	font-family: "Fira Mono", "Courier New", Courier, monospace;
 
 	&:hover {
 		cursor: pointer;

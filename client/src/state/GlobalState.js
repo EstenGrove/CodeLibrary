@@ -18,6 +18,36 @@ const mockSnippet = {
 	isLocked: true,
 	isStarred: true,
 	isActive: true,
+	usageSrc: `
+const Example = () => {
+	const [vals, setVals] = useState({
+		username: '',
+		password: '',
+		firstName: '',
+		lastName: ''
+	});
+
+	const handleChange = (e) => {
+		const {name, value} = e.target;
+		setVals({
+			...vals,
+			[name]: value
+		})
+	}
+
+	return (
+		<div>
+			<TextInput
+				name="username"
+				id="username"
+				label="Username"
+				val={vals.username}
+				handleChange={handleChange}
+			/>
+		</div>
+	)
+}
+	`,
 	codeSrc: `
 import React from "react";
 import styles from "../../css/shared/TextInput.module.scss";

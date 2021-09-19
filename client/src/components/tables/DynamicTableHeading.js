@@ -3,7 +3,6 @@ import styles from "../../css/tables/DynamicTableHeading.module.scss";
 import { PropTypes } from "prop-types";
 
 const DynamicTableHeading = ({ children, ...rest }) => {
-	console.log("children", children);
 	return (
 		<th className={styles.DynamicTableHeading} {...rest}>
 			{children}
@@ -15,4 +14,7 @@ export default DynamicTableHeading;
 
 DynamicTableHeading.defaultProps = {};
 
-DynamicTableHeading.propTypes = {};
+DynamicTableHeading.propTypes = {
+	children: PropTypes.any,
+	rest: PropTypes.any,
+};

@@ -14,4 +14,7 @@ export default DynamicTableContainer;
 
 DynamicTableContainer.defaultProps = {};
 
-DynamicTableContainer.propTypes = {};
+DynamicTableContainer.propTypes = {
+	children: PropTypes.any,
+	rest: PropTypes.any,
+};

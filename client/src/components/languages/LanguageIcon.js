@@ -22,14 +22,25 @@ const customCSS = {
 	},
 };
 
-const LanguageIcon = ({ language }) => {
-	const [isHovered, setIsHovered] = useState(false);
+const LanguageIcon = ({ language, showLangName = false }) => {
+	const [isHovered, setIsHovered] = useState(showLangName);
+
+	// supports override for showing 'text'
+	const handleMouseOver = () => {
+		if (showLangName) return;
+		return debounce(setIsHovered(true), 400);
+	};
+	// supports override for showing 'text'
+	const handleMouseOut = () => {
+		if (showLangName) return;
+		return debounce(setIsHovered(false), 400);
+	};
 
 	return (
 		<div
 			className={styles.LanguageIcon}
-			onMouseOver={() => debounce(setIsHovered(true), 400)}
-			onMouseOut={() => debounce(setIsHovered(false), 400)}
+			onMouseOver={handleMouseOver}
+			onMouseOut={handleMouseOut}
 		>
 			<svg
 				className={styles.LanguageIcon_icon}

@@ -14,4 +14,7 @@ export default DynamicTableHead;
 
 DynamicTableHead.defaultProps = {};
 
-DynamicTableHead.propTypes = {};
+DynamicTableHead.propTypes = {
+	children: PropTypes.any,
+	rest: PropTypes.any,
+};

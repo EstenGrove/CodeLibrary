@@ -17,4 +17,8 @@ export default DynamicTableCell;
 
 DynamicTableCell.defaultProps = {};
 
-DynamicTableCell.propTypes = {};
+DynamicTableCell.propTypes = {
+	align: PropTypes.string,
+	children: PropTypes.any,
+	rest: PropTypes.any,
+};

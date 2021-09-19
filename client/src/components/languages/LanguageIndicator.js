@@ -5,8 +5,6 @@ import { PropTypes } from "prop-types";
 import { langIcons } from "../../helpers/utils_languages";
 
 const LanguageIndicator = ({ language }) => {
-	console.log("language(indicator):", language);
-
 	return (
 		<div className={styles.LanguageIndicator}>
 			<svg className={styles.LanguageIndicator_icon}>

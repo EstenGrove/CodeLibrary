@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styles from "../css/views/SnippetDetailsView.module.scss";
 import { PropTypes } from "prop-types";
+import { getLangRecordFromMap } from "../helpers/utils_snippets";
 // mock img
 import DetailsViewMeta from "../components/details/DetailsViewMeta";
 import TagsList from "../components/tags/TagsList";
 import DetailsActionBar from "../components/details/DetailsActionBar";
 import CodeViewer from "../components/code/CodeViewer";
 import CodeUsageExample from "../components/code/CodeUsageExample";
-import { getLangRecordFromMap } from "../helpers/utils_snippets";
 import Table from "../components/tables/Table";
 import PropDefinitions from "../components/code/PropDefinitions";
 
@@ -56,7 +56,7 @@ const SnippetDetailsView = ({
 				{/* CODE SNIPPET SYNTAX */}
 				<CodeViewer code={snippet.codeSrc} language={language.name} />
 				{/* USAGE EXAMPLE */}
-				<CodeUsageExample code={snippet.codeSrc} language={language.name} />
+				<CodeUsageExample code={snippet.usageSrc} language={language.name} />
 				{/* PROP TYPES */}
 				<PropDefinitions
 					title="PropType Definitions: "

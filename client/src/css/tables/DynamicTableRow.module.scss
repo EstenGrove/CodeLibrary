@@ -4,7 +4,8 @@
 
 .DynamicTableRow {
 	width: 100%;
-	height: 100%;
+	// height: 100%;
+	height: 6rem;
 	border-radius: 0;
 
 	&:nth-child(odd) {
