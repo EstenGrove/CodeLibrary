@@ -3,9 +3,6 @@ import styles from "../css/pages/BoxShadowPage.module.scss";
 import { PropTypes } from "prop-types";
 // components
 import Header from "../components/app/Header";
-import CodePreview from "../components/shadows/CodePreview";
-import ShadowPreview from "../components/shadows/ShadowPreview";
-import ShadowSettingsPanel from "../components/shadows/ShadowSettingsPanel";
 import BoxShadowView from "../views/BoxShadowView";
 
 const BoxShadowPage = () => {

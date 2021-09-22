@@ -49,8 +49,8 @@ const ShadowSettingsPanel = ({
 						id="horizontalOffset"
 						val={values.horizontalOffset}
 						handleRange={handleRange}
-						min={-100}
-						max={100}
+						min={-1000}
+						max={1000}
 					/>
 					<Spacer height="4rem" />
 					<RangeSlider
@@ -59,8 +59,8 @@ const ShadowSettingsPanel = ({
 						id="verticalOffset"
 						val={values.verticalOffset}
 						handleRange={handleRange}
-						min={-100}
-						max={100}
+						min={-1000}
+						max={1000}
 					/>
 					<Spacer height="4rem" />
 					<RangeSlider
@@ -69,8 +69,8 @@ const ShadowSettingsPanel = ({
 						id="blurRadius"
 						val={values.blurRadius}
 						handleRange={handleRange}
-						min={-100}
-						max={100}
+						min={-1000}
+						max={1000}
 					/>
 					<Spacer height="4rem" />
 					<RangeSlider
@@ -79,8 +79,8 @@ const ShadowSettingsPanel = ({
 						id="spreadRadius"
 						val={values.spreadRadius}
 						handleRange={handleRange}
-						min={-100}
-						max={100}
+						min={-1000}
+						max={1000}
 					/>
 					<Spacer height="4rem" />
 				</section>

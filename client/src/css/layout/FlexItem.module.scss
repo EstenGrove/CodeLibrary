@@ -1,0 +1,8 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.FlexItem {
+	width: fit-content;
+	height: fit-content;
+}

@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import styles from "../css/pages/PlaygroundPage.module.scss";
 import { PropTypes } from "prop-types";
-import { generateID, purgeLeadingSpaces } from "../helpers/utils_processing";
+import { purgeLeadingSpaces } from "../helpers/utils_processing";
 // custom wrapper around syntax highlighter
 import Header from "../components/app/Header";
 import CodeViewer from "../components/code/CodeViewer";
 import CodeUsageExample from "../components/code/CodeUsageExample";
-import Table from "../components/tables/Table";
-import OneTimeExpiry from "../components/app/OneTimeExpiry";
-import { addMinutes, addSeconds } from "date-fns";
 import DynamicTableContainer from "../components/tables/DynamicTableContainer";
 import DynamicTable from "../components/tables/DynamicTable";
 import DynamicTableHead from "../components/tables/DynamicTableHead";
@@ -16,6 +13,19 @@ import DynamicTableRow from "../components/tables/DynamicTableRow";
 import DynamicTableCell from "../components/tables/DynamicTableCell";
 import DynamicTableBody from "../components/tables/DynamicTableBody";
 import DynamicTableHeading from "../components/tables/DynamicTableHeading";
+// test run
+import Flex from "../components/layout/Flex";
+import FlexItem from "../components/layout/FlexItem";
+// alternative version
+import FlexBox from "../components/layout/FlexBox";
+import FlexBoxItem from "../components/layout/FlexBoxItem";
+
+const customCSS = {
+	item: {
+		fontSize: "1.8rem",
+		fontWeight: "600",
+	},
+};
 
 const code = `
 // file size
@@ -94,6 +104,13 @@ const tableSchema = {
 	],
 };
 
+const classes = [
+	{ name: "Item", isActive: true },
+	{ name: "AddBorder", isActive: false },
+	{ name: "AddOpacity", isActive: true },
+	{ name: "Active", isActive: true },
+];
+
 const PlaygroundPage = () => {
 	const [showTimer, setShowTimer] = useState(false);
 
@@ -109,10 +126,39 @@ const PlaygroundPage = () => {
 				subtitle="Playground page for demos and examples."
 			/>
 
+			<div style={{ fontSize: "2rem", color: "#eaecef" }}>Dummy</div>
+			<div className={styles.PlaygroundPage_custom}>
+				<div style={customCSS.item}>Item #1</div>
+				<div style={customCSS.item}>Item #2</div>
+				<div style={customCSS.item}>Item #3</div>
+			</div>
+
+			{/* ALT VERSION ITEM */}
+			<div style={{ fontSize: "2rem", color: "#eaecef" }}>New</div>
+			<FlexBox
+				bgColor="#eaecef"
+				padding="1rem"
+				borderRadius=".5rem"
+				classes={classes}
+			>
+				<FlexBoxItem grow={2}>
+					<div style={customCSS.item}>Item #1</div>
+				</FlexBoxItem>
+				<FlexBoxItem grow={0}>
+					<div style={customCSS.item}>Item #2</div>
+				</FlexBoxItem>
+				<FlexBoxItem grow={0}>
+					<div style={customCSS.item}>Item #3</div>
+				</FlexBoxItem>
+			</FlexBox>
+
 			<div className={styles.PlaygroundPage_main}>
 				<button onClick={handleExpiryCounter}>Show Timer</button>
 			</div>
-			<div className={styles.PlaygroundPage_main}>
+			<div
+				className={styles.PlaygroundPage_main}
+				style={{ backgroundColor: `--var(purple500)` }}
+			>
 				<DynamicTableContainer>
 					<DynamicTable>
 						<DynamicTableHead>

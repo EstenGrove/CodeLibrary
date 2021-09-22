@@ -1,0 +1,27 @@
+// BREAKPOINT VARIABLES
+
+// Breakpoint Definitions:
+// - Mobile: 320-480
+// - Tablets: 481-768
+// - SmallScreens: 769-1024
+// - Desktops: 1025-1200
+// - LargeScreens: 1201-XXXX
+
+$breakpoint-XSM: 320; // 320-480
+$breakpoint-SM: 481; // 481-768
+$breakpoint-MD: 769; // 769-1024
+$breakpoint-LG: 1025; // 1025-1200
+$breakpoint-XLG: 1201; // 1200-XXXX
+
+// handles 'max-width' queries (ie. screens smaller than '$width')
+@mixin mq-maxWidth($width) {
+	@media only screen and (max-width: $width) {
+		@content;
+	}
+}
+// handles 'min-width' queries (ie. screens larger than '$width')
+@mixin mq-minWidth($width) {
+	@media only screen and (min-width: $width) {
+		@content;
+	}
+}

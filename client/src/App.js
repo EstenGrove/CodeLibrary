@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import { AppProviders } from "./state/AppProviders";
 import "./App.scss";
+
 // components
 import Main from "./components/Main";
 import Navbar from "./components/app/Navbar";
@@ -21,6 +22,8 @@ import OpenGraphGeneratorPage from "./pages/OpenGraphGeneratorPage";
 import DemoPage from "./pages/DemoPage";
 import PlaygroundPage from "./pages/PlaygroundPage";
 import SnippetDetailsPage from "./pages/SnippetDetailsPage";
+// // test run
+// import vars from "./sass/_variables.scss";
 
 const history = createBrowserHistory();
 

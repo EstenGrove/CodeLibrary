@@ -1,0 +1,14 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/custom";
+
+.FlexBox {
+	@include fill_container;
+}
+
+.AddOpacity {
+	opacity: 0.2;
+}
+.Active {
+	border: 2px solid purple;
+}
